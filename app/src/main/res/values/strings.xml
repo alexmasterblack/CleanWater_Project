@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Clean Water</string>
+    <string name="clean_water">Clean Water</string>
+    <string name="welcome_text">Определение экологического состояния водоёма</string>
+    <string name="description">People looking at globe with various flora and fauna</string>
+    <string name="registration_text">Зарегистрироваться</string>
+    <string name="login_text">Уже есть аккаунт?</string>
+    <string name="add">Добавить</string>
+    <string name="research">Исследования</string>
+    <string name="profile">Профиль</string>
 </resources>

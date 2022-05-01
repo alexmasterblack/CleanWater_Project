@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/inputResearchFragment">
+
+    <fragment
+        android:id="@+id/inputResearchFragment"
+        android:name="com.example.cleanwater_project.presentation.main.InputResearchFragment"
+        android:label="InputResearchFragment" />
+    <fragment
+        android:id="@+id/researchFragment"
+        android:name="com.example.cleanwater_project.presentation.main.ResearchFragment"
+        android:label="ResearchFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.cleanwater_project.presentation.main.ProfileFragment"
+        android:label="ProfileFragment" />
+</navigation>
