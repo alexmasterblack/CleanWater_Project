@@ -8,4 +8,7 @@
     <string name="add">Добавить</string>
     <string name="research">Исследования</string>
     <string name="profile">Профиль</string>
+    <string name="login_button_text">Войти</string>
+    <string name="buy_text">Приобрести pro</string>
+    <string name="no_buy_text">Нет, спасибо</string>
 </resources>

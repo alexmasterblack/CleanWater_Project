@@ -11,4 +11,5 @@
     <color name="dark">#3D3D3F</color>
     <color name="blue">#6B84C6</color>
     <color name="sea">#CFDDF8</color>
+    <color name="light_sea">#F0F3F9</color>
 </resources>
