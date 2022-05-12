@@ -63,7 +63,9 @@ class ResearchFragment : Fragment(R.layout.research_fragment) {
         )
     )
 
-    private val adapter = RecyclerViewAdapter()
+    private val adapter = RecyclerViewAdapter {
+        findNavController().navigate(R.id.action_researchFragment_to_research_navigation)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

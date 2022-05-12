@@ -21,7 +21,9 @@
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/registration_fragment.xml" value="0.2" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/research_card.xml" value="0.4" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/research_date.xml" value="0.25" />
+        <entry key="..\:/CleanWater_Project/app/src/main/res/layout/research_details_fragment.xml" value="0.25" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/research_fragment.xml" value="0.25" />
+        <entry key="..\:/CleanWater_Project/app/src/main/res/layout/sample_details_fragment.xml" value="0.25" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/sample_fragment.xml" value="0.25" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/sample_item.xml" value="0.25" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/table_benefits_viewpager2.xml" value="0.25" />

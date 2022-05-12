@@ -6,16 +6,24 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cleanwater_project.R
+import com.example.domain.models.ResearchCard
 import com.example.domain.models.SampleItem
 
-class RecyclerViewAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class RecyclerViewAdapter(private val clickListener: (SampleItem) -> Unit) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val data: MutableList<SampleItem> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.sample_item, parent, false)
-        return SampleItemViewHolder(view)
+        val viewHolder =
+            SampleItemViewHolder(
+                LayoutInflater.from(parent.context)
+                    .inflate(R.layout.sample_item, parent, false)
+            )
+        viewHolder.itemView.setOnClickListener {
+            clickListener(data[viewHolder.adapterPosition] as SampleItem)
+        }
+        return viewHolder
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {

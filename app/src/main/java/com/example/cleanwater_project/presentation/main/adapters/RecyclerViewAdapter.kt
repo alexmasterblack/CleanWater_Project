@@ -8,14 +8,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.cleanwater_project.R
 import com.example.domain.models.ResearchCard
 
-class RecyclerViewAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class RecyclerViewAdapter(private val clickListener: (ResearchCard) -> Unit) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val data: MutableList<ResearchCard> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.research_card, parent, false)
-        return ResearchCardViewHolder(view)
+        val viewHolder =
+            ResearchCardViewHolder(
+                LayoutInflater.from(parent.context)
+                    .inflate(R.layout.research_card, parent, false)
+            )
+        viewHolder.itemView.setOnClickListener {
+            clickListener(data[viewHolder.adapterPosition] as ResearchCard)
+        }
+        return viewHolder
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {

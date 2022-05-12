@@ -117,7 +117,9 @@ class SampleFragment : Fragment(R.layout.sample_fragment) {
         )
     )
 
-    private val adapter = RecyclerViewAdapter()
+    private val adapter = RecyclerViewAdapter {
+        findNavController().navigate(R.id.action_sampleFragment_to_sampleDetailsFragment)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

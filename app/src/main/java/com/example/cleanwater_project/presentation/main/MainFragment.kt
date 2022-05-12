@@ -20,7 +20,13 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         // потом сделать по-человечески
         navController.addOnDestinationChangedListener { _, destination, _ ->
             val fragments =
-                intArrayOf(R.id.sampleFragment, R.id.checkResearchFragment, R.id.totalFragment)
+                intArrayOf(
+                    R.id.sampleFragment,
+                    R.id.checkResearchFragment,
+                    R.id.totalFragment,
+                    R.id.researchDetailsFragment,
+                    R.id.sampleDetailsFragment
+                )
             if (destination.id in fragments) {
 
                 bottomNavView.visibility = View.GONE
