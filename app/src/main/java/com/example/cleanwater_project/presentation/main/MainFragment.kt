@@ -16,6 +16,20 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         val bottomNavView = view.findViewById<BottomNavigationView>(R.id.main_navigation)
         val navController =
             (childFragmentManager.findFragmentById(R.id.main_container) as NavHostFragment).navController
+
+        // потом сделать по-человечески
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            val fragments =
+                intArrayOf(R.id.sampleFragment, R.id.checkResearchFragment, R.id.totalFragment)
+            if (destination.id in fragments) {
+
+                bottomNavView.visibility = View.GONE
+            } else {
+
+                bottomNavView.visibility = View.VISIBLE
+            }
+        }
+
         bottomNavView.setupWithNavController(navController)
     }
 }

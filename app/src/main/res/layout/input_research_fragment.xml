@@ -32,7 +32,7 @@
                 android:id="@+id/main_info_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:text="Основная информация"
                 android:textAlignment="center"
                 android:textColor="@color/blue"
@@ -42,15 +42,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/research"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="15dp"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/main_info_text">
@@ -73,19 +72,22 @@
 
                     <EditText
                         android:id="@+id/input_research"
+                        style="@style/EditTextStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="10dp"
-                        android:hint="№ исследования" />
+                        android:background="@drawable/rounded_edit_text"
+                        android:hint="№ исследования"
+                        android:padding="10dp" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -93,7 +95,6 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="15dp"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/research">
@@ -116,19 +117,22 @@
 
                     <EditText
                         android:id="@+id/input_time"
+                        style="@style/EditTextStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="10dp"
-                        android:hint="Время" />
+                        android:background="@drawable/rounded_edit_text"
+                        android:hint="Время"
+                        android:padding="10dp" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/latitude"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -136,7 +140,6 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="15dp"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/time">
@@ -159,19 +162,22 @@
 
                     <EditText
                         android:id="@+id/input_latitude"
+                        style="@style/EditTextStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="10dp"
-                        android:hint="Широта" />
+                        android:background="@drawable/rounded_edit_text"
+                        android:hint="Широта"
+                        android:padding="10dp" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/longitude"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -179,7 +185,6 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="15dp"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/latitude">
@@ -202,19 +207,22 @@
 
                     <EditText
                         android:id="@+id/input_longitude"
+                        style="@style/EditTextStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="10dp"
-                        android:hint="Долгота" />
+                        android:background="@drawable/rounded_edit_text"
+                        android:hint="Долгота"
+                        android:padding="10dp" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/locality"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -222,7 +230,6 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="15dp"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/longitude">
@@ -245,19 +252,22 @@
 
                     <EditText
                         android:id="@+id/input_locality"
+                        style="@style/EditTextStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="10dp"
-                        android:hint="Населенный пункт" />
+                        android:background="@drawable/rounded_edit_text"
+                        android:hint="Населенный пункт"
+                        android:padding="10dp" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/basin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -265,7 +275,6 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="15dp"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/locality">
@@ -288,19 +297,22 @@
 
                     <EditText
                         android:id="@+id/input_basin"
+                        style="@style/EditTextStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="10dp"
-                        android:hint="Бассейн" />
+                        android:background="@drawable/rounded_edit_text"
+                        android:hint="Бассейн"
+                        android:padding="10dp" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/length"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -308,7 +320,6 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="15dp"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/locality">
@@ -331,23 +342,26 @@
 
                     <EditText
                         android:id="@+id/input_length"
+                        style="@style/EditTextStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="10dp"
-                        android:hint="Протяженность" />
+                        android:background="@drawable/rounded_edit_text"
+                        android:hint="Протяженность"
+                        android:padding="10dp" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
             <TextView
                 android:id="@+id/point_info_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:text="Точка сбора"
                 android:textAlignment="center"
                 android:textColor="@color/blue"
@@ -357,15 +371,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/length" />
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/part_basin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="15dp"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/point_info_text">
@@ -388,19 +401,22 @@
 
                     <EditText
                         android:id="@+id/input_part_basin"
+                        style="@style/EditTextStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="10dp"
-                        android:hint="Часть речного бассейна" />
+                        android:background="@drawable/rounded_edit_text"
+                        android:hint="Часть речного бассейна"
+                        android:padding="10dp" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/longitudinal_zone_watercourse"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -408,7 +424,6 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="15dp"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/part_basin">
@@ -431,19 +446,22 @@
 
                     <EditText
                         android:id="@+id/input_longitudinal_zone_watercourse"
+                        style="@style/EditTextStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="10dp"
-                        android:hint="Продольная зона водотока" />
+                        android:background="@drawable/rounded_edit_text"
+                        android:hint="Продольная зона водотока"
+                        android:padding="10dp" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/longitudinal_element_channel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -451,7 +469,6 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="15dp"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/longitudinal_zone_watercourse">
@@ -474,19 +491,22 @@
 
                     <EditText
                         android:id="@+id/input_longitudinal_element_channel"
+                        style="@style/EditTextStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="10dp"
-                        android:hint="Продольный элемент русла" />
+                        android:background="@drawable/rounded_edit_text"
+                        android:hint="Продольный элемент русла"
+                        android:padding="10dp" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/transverse_element_channel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -494,7 +514,6 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="15dp"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/longitudinal_element_channel">
@@ -517,19 +536,22 @@
 
                     <EditText
                         android:id="@+id/input_transverse_element_channel"
+                        style="@style/EditTextStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="10dp"
-                        android:hint="Поперечный элемент русла" />
+                        android:background="@drawable/rounded_edit_text"
+                        android:hint="Поперечный элемент русла"
+                        android:padding="10dp" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/сurrent_speed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -537,7 +559,6 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="15dp"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/transverse_element_channel">
@@ -560,19 +581,22 @@
 
                     <EditText
                         android:id="@+id/input_сurrent_speed"
+                        style="@style/EditTextStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="10dp"
-                        android:hint="Скорость течения" />
+                        android:background="@drawable/rounded_edit_text"
+                        android:hint="Скорость течения"
+                        android:padding="10dp" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/сhannel_width"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -580,7 +604,6 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="15dp"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/сurrent_speed">
@@ -603,19 +626,22 @@
 
                     <EditText
                         android:id="@+id/input_сhannel_width"
+                        style="@style/EditTextStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="10dp"
-                        android:hint="Ширина русла" />
+                        android:background="@drawable/rounded_edit_text"
+                        android:hint="Ширина русла"
+                        android:padding="10dp" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/average_length"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -623,7 +649,6 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="15dp"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/сhannel_width">
@@ -646,19 +671,22 @@
 
                     <EditText
                         android:id="@+id/input_average_length"
+                        style="@style/EditTextStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="10dp"
-                        android:hint="Средняя длина" />
+                        android:background="@drawable/rounded_edit_text"
+                        android:hint="Средняя длина"
+                        android:padding="10dp" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/substrate_type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -666,7 +694,6 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="15dp"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/сhannel_width">
@@ -689,19 +716,22 @@
 
                     <EditText
                         android:id="@+id/input_substrate_type"
+                        style="@style/EditTextStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="10dp"
-                        android:hint="Тип донного субстрата" />
+                        android:background="@drawable/rounded_edit_text"
+                        android:hint="Тип донного субстрата"
+                        android:padding="10dp" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/development_aquatic_vegetation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -709,7 +739,6 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="15dp"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/substrate_type">
@@ -732,19 +761,22 @@
 
                     <EditText
                         android:id="@+id/input_development_aquatic_vegetation"
+                        style="@style/EditTextStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="10dp"
-                        android:hint="Развитие водной растительности" />
+                        android:background="@drawable/rounded_edit_text"
+                        android:hint="Развитие водной растительности"
+                        android:padding="10dp" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/coastal_vegetation_type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -752,7 +784,6 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="15dp"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/development_aquatic_vegetation">
@@ -775,19 +806,22 @@
 
                     <EditText
                         android:id="@+id/input_coastal_vegetation_type"
+                        style="@style/EditTextStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="10dp"
-                        android:hint="Тип прибрежной растительности" />
+                        android:background="@drawable/rounded_edit_text"
+                        android:hint="Тип прибрежной растительности"
+                        android:padding="10dp" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/illumination_channel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -795,7 +829,6 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="15dp"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/coastal_vegetation_type">
@@ -818,19 +851,22 @@
 
                     <EditText
                         android:id="@+id/input_illumination_channel"
+                        style="@style/EditTextStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="10dp"
-                        android:hint="Освещенность русла" />
+                        android:background="@drawable/rounded_edit_text"
+                        android:hint="Освещенность русла"
+                        android:padding="10dp" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/anthropogenic_influence"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -838,7 +874,6 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="15dp"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/illumination_channel">
@@ -861,19 +896,22 @@
 
                     <EditText
                         android:id="@+id/input_anthropogenic_influence"
+                        style="@style/EditTextStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="10dp"
-                        android:hint="Антропогенное влияние" />
+                        android:background="@drawable/rounded_edit_text"
+                        android:hint="Антропогенное влияние"
+                        android:padding="10dp" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/sampling_method"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -881,7 +919,6 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="15dp"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/anthropogenic_influence">
@@ -904,19 +941,22 @@
 
                     <EditText
                         android:id="@+id/input_sampling_method"
+                        style="@style/EditTextStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="10dp"
-                        android:hint="Метод отбора проб" />
+                        android:background="@drawable/rounded_edit_text"
+                        android:hint="Метод отбора проб"
+                        android:padding="10dp" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/sampler_type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -924,7 +964,6 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="15dp"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/sampling_method">
@@ -947,19 +986,22 @@
 
                     <EditText
                         android:id="@+id/input_sampler_type"
+                        style="@style/EditTextStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="10dp"
-                        android:hint="Тип пробоотборника" />
+                        android:background="@drawable/rounded_edit_text"
+                        android:hint="Тип пробоотборника"
+                        android:padding="10dp" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/air_temperature"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -967,7 +1009,6 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="15dp"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/sampler_type">
@@ -990,19 +1031,22 @@
 
                     <EditText
                         android:id="@+id/input_air_temperature"
+                        style="@style/EditTextStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="10dp"
-                        android:hint="Температура воздуха" />
+                        android:background="@drawable/rounded_edit_text"
+                        android:hint="Температура воздуха"
+                        android:padding="10dp" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/water_temperature"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1010,7 +1054,6 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="15dp"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/air_temperature">
@@ -1033,19 +1076,22 @@
 
                     <EditText
                         android:id="@+id/input_water_temperature"
+                        style="@style/EditTextStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="10dp"
-                        android:hint="Температура воды" />
+                        android:background="@drawable/rounded_edit_text"
+                        android:hint="Температура воды"
+                        android:padding="10dp" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/comment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1053,7 +1099,6 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="15dp"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/water_temperature">
@@ -1076,28 +1121,29 @@
 
                     <EditText
                         android:id="@+id/input_comment"
+                        style="@style/EditTextStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="10dp"
-                        android:hint="Комментарий" />
+                        android:background="@drawable/rounded_edit_text"
+                        android:hint="Комментарий"
+                        android:padding="10dp" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/photo_point"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="15dp"
-                android:layout_marginBottom="20dp"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/comment">
@@ -1120,26 +1166,29 @@
 
                     <EditText
                         android:id="@+id/input_photo_point"
+                        style="@style/EditTextStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="10dp"
-                        android:hint="Фото точки отбора" />
+                        android:background="@drawable/rounded_edit_text"
+                        android:hint="Фото точки отбора"
+                        android:padding="10dp" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buy_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="72dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="72dp"
-                android:layout_marginBottom="50dp"
+                android:layout_marginBottom="10dp"
                 android:backgroundTint="@color/blue"
                 android:letterSpacing="0"
                 android:paddingTop="10dp"
