@@ -17,8 +17,8 @@ class RegistrationFragment : Fragment(R.layout.registration_fragment) {
             findNavController().navigateUp()
         }
 
-        view.findViewById<TextView>(R.id.registration_button).setOnClickListener {
-            findNavController().navigate(R.id.action_registrationFragment_to_versionSelectionFragment)
-        }
+//        view.findViewById<TextView>(R.id.registration_button).setOnClickListener {
+//            findNavController().navigate(R.id.action_registrationFragment_to_versionSelectionFragment)
+//        }
     }
 }

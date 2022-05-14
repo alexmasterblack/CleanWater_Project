@@ -11,4 +11,5 @@
     <string name="login_button_text">Войти</string>
     <string name="buy_text">Приобрести pro</string>
     <string name="no_buy_text">Нет, спасибо</string>
+    <string name="continue_button">Начать</string>
 </resources>

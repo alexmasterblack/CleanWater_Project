@@ -66,14 +66,16 @@
     <fragment
         android:id="@+id/totalFragment"
         android:name="com.example.cleanwater_project.presentation.total.TotalFragment"
-        android:label="TotalFragment">
+        android:label="TotalFragment" >
         <action
-            android:id="@+id/action_totalFragment_to_researchFragment"
-            app:destination="@id/researchFragment"
+            android:id="@+id/action_totalFragment_to_inputResearchFragment"
+            app:destination="@id/inputResearchFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/main_navigation"
+            app:popUpToInclusive="true"/>
     </fragment>
     <navigation
         android:id="@+id/sample_navigation"

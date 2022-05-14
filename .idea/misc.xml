@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/CleanWater_Project/app/src/main/res/drawable/color_indicator.xml" value="0.1295" />
+        <entry key="..\:/CleanWater_Project/app/src/main/res/drawable/ic_button.xml" value="0.1585" />
+        <entry key="..\:/CleanWater_Project/app/src/main/res/drawable/ic_shape.xml" value="0.1585" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/drawable/ic_table_benefits_1.xml" value="0.1535" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/drawable/rounded_edit_text.xml" value="0.1535" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/drawable/splash_background.xml" value="0.1605" />
@@ -29,7 +31,7 @@
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/table_benefits_viewpager2.xml" value="0.25" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/total_fragment.xml" value="0.25" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/version_selection_fragment.xml" value="0.264" />
-        <entry key="..\:/CleanWater_Project/app/src/main/res/layout/welcome_fragment.xml" value="0.25" />
+        <entry key="..\:/CleanWater_Project/app/src/main/res/layout/welcome_fragment.xml" value="0.24615384615384617" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/menu/main_menu.xml" value="0.25" />
       </map>
     </option>

@@ -17,8 +17,8 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
             findNavController().navigateUp()
         }
 
-        view.findViewById<TextView>(R.id.login_button).setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_versionSelectionFragment)
-        }
+//        view.findViewById<TextView>(R.id.login_button).setOnClickListener {
+//            findNavController().navigate(R.id.action_loginFragment_to_versionSelectionFragment)
+//        }
     }
 }

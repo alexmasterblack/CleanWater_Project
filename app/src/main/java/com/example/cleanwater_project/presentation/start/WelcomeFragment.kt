@@ -13,12 +13,17 @@ class WelcomeFragment : Fragment(R.layout.welcome_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<TextView>(R.id.registration_button).setOnClickListener {
-            findNavController().navigate(R.id.action_welcomeFragment_to_registrationFragment)
-        }
+        // переход на страницы регистрации и входа
+//        view.findViewById<TextView>(R.id.registration_button).setOnClickListener {
+//            findNavController().navigate(R.id.action_welcomeFragment_to_registrationFragment)
+//        }
+//
+//        view.findViewById<TextView>(R.id.login_button).setOnClickListener {
+//            findNavController().navigate(R.id.action_welcomeFragment_to_loginFragment)
+//        }
 
-        view.findViewById<TextView>(R.id.login_button).setOnClickListener {
-            findNavController().navigate(R.id.action_welcomeFragment_to_loginFragment)
+        view.findViewById<TextView>(R.id.continue_button).setOnClickListener {
+            findNavController().navigate(R.id.action_welcomeFragment_to_versionSelectionFragment)
         }
     }
 }

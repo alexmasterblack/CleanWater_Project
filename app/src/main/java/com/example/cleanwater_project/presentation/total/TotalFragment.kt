@@ -18,7 +18,7 @@ class TotalFragment : Fragment(R.layout.total_fragment) {
         }
 
         view.findViewById<MaterialButton>(R.id.finish_button).setOnClickListener {
-            findNavController().navigate(R.id.action_totalFragment_to_researchFragment)
+            findNavController().navigate(R.id.action_totalFragment_to_inputResearchFragment)
         }
     }
 }
