@@ -28,10 +28,8 @@
     <string name="latitude">Широта</string>
     <string name="longitude">Долгота</string>
     <string name="save_button">Сохранить</string>
-    <string name="ip_index">IP<sub>1</sub></string>
-    <string name="im_index">IM<sub>TV</sub></string>
-    <string name="ib_index">IB</string>
     <string name="index">ИНДЕКС</string>
     <string name="further">Далее</string>
     <string name="hydrobiont_image">Гидробионт</string>
+    <string name="result">Итог</string>
 </resources>

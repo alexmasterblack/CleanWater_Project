@@ -22,9 +22,12 @@
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout-v23/version_selection_fragment.xml" value="0.25" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/activity_main.xml" value="0.24615384615384617" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/check_research_fragment.xml" value="0.25" />
+        <entry key="..\:/CleanWater_Project/app/src/main/res/layout/indices_table_fragment.xml" value="0.25" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/input_research_fragment.xml" value="0.24166666666666667" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/login_fragment.xml" value="0.25" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/main_fragment.xml" value="0.25" />
+        <entry key="..\:/CleanWater_Project/app/src/main/res/layout/main_info_fragment.xml" value="0.25" />
+        <entry key="..\:/CleanWater_Project/app/src/main/res/layout/pie_chart_fragment.xml" value="0.25" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/profile_fragment.xml" value="0.25" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/registration_fragment.xml" value="0.2" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/research_card.xml" value="0.4" />
@@ -35,6 +38,7 @@
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/sample_fragment.xml" value="0.25" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/sample_item.xml" value="0.49272727272727274" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/sample_item_check.xml" value="0.10989583333333333" />
+        <entry key="..\:/CleanWater_Project/app/src/main/res/layout/sample_table_fragment.xml" value="0.25" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/table_benefits_viewpager2.xml" value="0.25" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/total_fragment.xml" value="0.264" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/total_table_item.xml" value="0.25" />
