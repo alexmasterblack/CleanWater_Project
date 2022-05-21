@@ -11,7 +11,7 @@
         android:layout_marginStart="60dp"
         android:layout_marginTop="70dp"
         android:layout_marginEnd="60dp"
-        android:text="Вы откроете для себя много полезного если продолжите на Pro версии"
+        android:text="@string/version_selection_text"
         android:textAlignment="center"
         android:textColor="@color/blue"
         android:textSize="20sp"

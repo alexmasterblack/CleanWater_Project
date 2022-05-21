@@ -1,6 +1,8 @@
 package com.example.cleanwater_project.presentation.sample
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
@@ -13,6 +15,7 @@ import com.example.cleanwater_project.presentation.sample.adapters.RecyclerViewA
 import com.example.domain.models.ResearchCard
 import com.example.domain.models.SampleItem
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.divider.MaterialDividerItemDecoration
 
 class SampleFragment : Fragment(R.layout.sample_fragment) {
 
@@ -21,99 +24,113 @@ class SampleFragment : Fragment(R.layout.sample_fragment) {
             1,
             1,
             "Ручейники",
-            "Количество: 0",
-            "Пока ничего особенного"
+            "",
+            "Пока ничего особенного",
+            0
         ),
         SampleItem(
             2,
             1,
             "Ручейники",
-            "Количество: 0",
-            "Пока ничего особенного"
+            "",
+            "Пока ничего особенного",
+            0
         ),
         SampleItem(
             3,
             1,
             "Веснянки",
-            "Количество: 0",
-            "Пока ничего особенного"
+            "",
+            "Пока ничего особенного",
+            0
         ),
         SampleItem(
             3,
             1,
             "Поденки",
-            "Количество: 0",
-            "Пока ничего особенного"
+            "",
+            "Пока ничего особенного",
+            0
         ),
         SampleItem(
             3,
             1,
             "Стрекозы",
-            "Количество: 0",
-            "Пока ничего особенного"
+            "",
+            "Пока ничего особенного",
+            0
         ),
         SampleItem(
             3,
             1,
             "Планарии",
-            "Количество: 0",
-            "Пока ничего особенного"
+            "",
+            "Пока ничего особенного",
+            0
         ),
         SampleItem(
             3,
             1,
             "Изоподы",
-            "Количество: 0",
-            "Пока ничего особенного"
+            "",
+            "Пока ничего особенного",
+            0
         ),
         SampleItem(
             3,
             1,
             "Пиявки",
-            "Количество: 0",
-            "Пока ничего особенного"
+            "",
+            "Пока ничего особенного",
+            0
         ),
         SampleItem(
             3,
             1,
             "Молюски 1",
-            "Количество: 0",
-            "Пока ничего особенного"
+            "",
+            "Пока ничего особенного",
+            0
         ),
         SampleItem(
             3,
             1,
             "Молюски 2",
-            "Количество: 0",
-            "Пока ничего особенного"
+            "",
+            "Пока ничего особенного",
+            0
         ),
         SampleItem(
             3,
             1,
             "Хирономиды",
-            "Количество: 0",
-            "Пока ничего особенного"
+            "",
+            "Пока ничего особенного",
+            0
         ),
         SampleItem(
             3,
             1,
             "Олигохеты",
-            "Количество: 0",
-            "Пока ничего особенного"
+            "",
+            "Пока ничего особенного",
+            0
         ),
         SampleItem(
             3,
             1,
             "Ракообразные",
-            "Количество: 0",
-            "Пока ничего особенного"
+            "",
+            "Пока ничего особенного",
+            0
         ),
         SampleItem(
             3,
             1,
             "Неопределен",
-            "Количество: 0",
-            "Пока ничего особенного"
+            "",
+            "Пока ничего особенного",
+            0
         )
     )
 
@@ -132,15 +149,23 @@ class SampleFragment : Fragment(R.layout.sample_fragment) {
             findNavController().navigate(R.id.action_sampleFragment_to_checkResearchFragment)
         }
 
+        val divider =
+            MaterialDividerItemDecoration(this.requireContext(), LinearLayoutManager.VERTICAL)
+
         view.findViewById<RecyclerView>(R.id.samples).apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = this@SampleFragment.adapter
-            addItemDecoration(
-                DividerItemDecoration(
-                    this@SampleFragment.requireContext(),
-                    LinearLayoutManager.VERTICAL
-                )
-            )
+            divider.dividerInsetStart = TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                90f,
+                resources.displayMetrics
+            ).toInt()
+            divider.dividerInsetEnd = TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                20f,
+                resources.displayMetrics
+            ).toInt()
+            addItemDecoration(divider)
         }
         adapter.setData(data)
     }

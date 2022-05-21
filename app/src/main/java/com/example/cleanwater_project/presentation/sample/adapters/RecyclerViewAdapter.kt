@@ -21,7 +21,7 @@ class RecyclerViewAdapter(private val clickListener: (SampleItem) -> Unit) :
                     .inflate(R.layout.sample_item, parent, false)
             )
         viewHolder.itemView.setOnClickListener {
-            clickListener(data[viewHolder.adapterPosition] as SampleItem)
+            clickListener(data[viewHolder.adapterPosition])
         }
         return viewHolder
     }
@@ -41,13 +41,13 @@ class RecyclerViewAdapter(private val clickListener: (SampleItem) -> Unit) :
     }
 
     inner class SampleItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val animalName = itemView.findViewById<TextView>(R.id.animal_name)
+        private val hydrobiontName = itemView.findViewById<TextView>(R.id.animal_name)
         private val amount = itemView.findViewById<TextView>(R.id.amount)
 
 
         fun bind(item: SampleItem) {
-            animalName.text = item.animalName
-            amount.text = item.amount
+            hydrobiontName.text = item.hydrobiontName
+            amount.text = "Количество: " + item.amount.toString()
         }
     }
 }
