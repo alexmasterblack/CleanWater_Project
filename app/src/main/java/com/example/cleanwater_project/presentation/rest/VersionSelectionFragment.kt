@@ -3,12 +3,11 @@ package com.example.cleanwater_project.presentation.rest
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.cleanwater_project.R
-import com.example.cleanwater_project.presentation.rest.adapters.ViewPagerAdapter
+import com.example.cleanwater_project.presentation.adapters.ViewPagerAdapter
 import com.google.android.material.snackbar.Snackbar
 import me.relex.circleindicator.CircleIndicator3
 

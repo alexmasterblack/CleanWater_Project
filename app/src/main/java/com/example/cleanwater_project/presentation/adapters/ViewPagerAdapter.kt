@@ -1,4 +1,4 @@
-package com.example.cleanwater_project.presentation.rest.adapters
+package com.example.cleanwater_project.presentation.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +11,7 @@ class ViewPagerAdapter(private val tables: List<Int>) :
     RecyclerView.Adapter<ViewPagerAdapter.Pager2ViewHolder>() {
 
     inner class Pager2ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val itemImage: ImageView = itemView.findViewById(R.id.table_part)
+        val itemImage: ImageView = itemView.findViewById(R.id.part)
     }
 
     override fun onCreateViewHolder(
@@ -20,7 +20,7 @@ class ViewPagerAdapter(private val tables: List<Int>) :
     ): ViewPagerAdapter.Pager2ViewHolder {
         return Pager2ViewHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.table_benefits_viewpager2, parent, false)
+                .inflate(R.layout.table_viewpager, parent, false)
         )
     }
 

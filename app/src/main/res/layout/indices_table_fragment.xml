@@ -35,11 +35,7 @@
                 android:layout_width="164dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
-                android:background="@drawable/ic_water_quality"
-                android:gravity="center"
-                android:textColor="@color/dark"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:background="@drawable/ic_water_quality" />
 
         </LinearLayout>
 
@@ -53,6 +49,7 @@
         android:layout_marginEnd="20dp"
         android:divider="@drawable/check_divider"
         android:orientation="vertical"
+        android:paddingBottom="20dp"
         android:showDividers="middle"
         app:layout_constraintTop_toBottomOf="@+id/header">
 
