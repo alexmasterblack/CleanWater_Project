@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/inputResearchFragment">
+
+    <fragment
+        android:id="@+id/inputResearchFragment"
+        android:name="com.example.cleanwater_project.presentation.main.InputResearchFragment"
+        android:label="InputResearchFragment">
+        <action
+            android:id="@+id/action_inputResearchFragment_to_sampleFragment"
+            app:destination="@id/sampleFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/researchFragment"
+        android:name="com.example.cleanwater_project.presentation.main.ResearchFragment"
+        android:label="ResearchFragment">
+        <action
+            android:id="@+id/action_researchFragment_to_research_navigation"
+            app:destination="@id/research_navigation"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.cleanwater_project.presentation.main.ProfileFragment"
+        android:label="ProfileFragment" />
+    <fragment
+        android:id="@+id/sampleFragment"
+        android:name="com.example.cleanwater_project.presentation.sample.SampleFragment"
+        android:label="SampleFragment">
+        <action
+            android:id="@+id/action_sampleFragment_to_checkResearchFragment"
+            app:destination="@id/checkResearchFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_sampleFragment_to_sampleDetailsFragment"
+            app:destination="@id/sample_navigation"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/checkResearchFragment"
+        android:name="com.example.cleanwater_project.presentation.total.CheckResearchFragment"
+        android:label="CheckResearchFragment">
+        <action
+            android:id="@+id/action_checkResearchFragment_to_totalFragment"
+            app:destination="@id/totalFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/totalFragment"
+        android:name="com.example.cleanwater_project.presentation.total.TotalFragment"
+        android:label="TotalFragment" >
+        <action
+            android:id="@+id/action_totalFragment_to_inputResearchFragment"
+            app:destination="@id/inputResearchFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/main_navigation"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <navigation
+        android:id="@+id/sample_navigation"
+        app:startDestination="@id/sampleDetailsFragment">
+        <fragment
+            android:id="@+id/sampleDetailsFragment"
+            android:name="com.example.cleanwater_project.presentation.sample.SampleDetailsFragment"
+            android:label="SampleDetailsFragment" />
+    </navigation>
+    <navigation
+        android:id="@+id/research_navigation"
+        app:startDestination="@id/researchDetailsFragment">
+        <fragment
+            android:id="@+id/researchDetailsFragment"
+            android:name="com.example.cleanwater_project.presentation.main.ResearchDetailsFragment"
+            android:label="ResearchDetailsFragment" />
+    </navigation>
+</navigation>

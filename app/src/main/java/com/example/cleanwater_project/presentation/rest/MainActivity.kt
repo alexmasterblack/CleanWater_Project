@@ -1,4 +1,4 @@
-package com.example.cleanwater_project.presentation
+package com.example.cleanwater_project.presentation.rest
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

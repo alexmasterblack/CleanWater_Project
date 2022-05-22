@@ -1,3 +1,35 @@
 <resources>
     <string name="app_name">Clean Water</string>
+    <string name="clean_water">Clean Water</string>
+    <string name="welcome_text">Определение экологического состояния водоёма</string>
+    <string name="description">People looking at globe with various flora and fauna</string>
+    <string name="registration_text">Зарегистрироваться</string>
+    <string name="login_text">Уже есть аккаунт?</string>
+    <string name="add">Добавить</string>
+    <string name="research">Исследования</string>
+    <string name="profile">Профиль</string>
+    <string name="login_button_text">Войти</string>
+    <string name="buy_text">Приобрести pro</string>
+    <string name="no_buy_text">Нет, спасибо</string>
+    <string name="continue_button">Начать</string>
+    <string name="version_selection_text">Вы откроете для себя много полезного если продолжите на Pro версии</string>
+    <string name="snackbar_buy">В данный момент полная версия недоступна для покупки</string>
+    <string name="snackbar_clear">Ясно</string>
+    <string name="total">Всего</string>
+    <string name="species_lang">Разновидности</string>
+    <string name="species_latin">Species</string>
+    <string name="amount">Кол</string>
+    <string name="sample_text">Пробы</string>
+    <string name="main_information_text">Основная информация</string>
+    <string name="date">Дата</string>
+    <string name="locality">Населенный пункт</string>
+    <string name="reservoir">Водоем</string>
+    <string name="coordinates">Координаты, DD:dd</string>
+    <string name="latitude">Широта</string>
+    <string name="longitude">Долгота</string>
+    <string name="save_button">Сохранить</string>
+    <string name="index">ИНДЕКС</string>
+    <string name="further">Далее</string>
+    <string name="hydrobiont_image">Гидробионт</string>
+    <string name="result">Итог</string>
 </resources>
