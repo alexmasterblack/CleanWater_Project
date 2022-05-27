@@ -6,8 +6,8 @@ import com.example.data.hydrobionts.room.HydrobiontDao
 import com.example.data.hydrobionts.room.entities.HydrobiontDbEntity
 import com.example.data.image.room.ImageDao
 import com.example.data.image.room.entities.ImageDbEntity
-import com.example.data.index.room.IndexDao
-import com.example.data.index.room.entities.IndexDbEntity
+import com.example.data.index.room.IndexValueDao
+import com.example.data.index.room.entities.IndexValueDbEntity
 import com.example.data.indices.room.IndexNameDao
 import com.example.data.indices.room.entities.IndexNameDbEntity
 import com.example.data.probe.room.ProbeDao
@@ -21,22 +21,22 @@ import com.example.data.research.room.entities.ResearchDbEntity
         ResearchDbEntity::class,
         HydrobiontDbEntity::class,
         ProbeDbEntity::class,
-        IndexDbEntity::class,
+        IndexValueDbEntity::class,
         IndexNameDbEntity::class,
         ImageDbEntity::class
     ]
 )
-abstract class Database : RoomDatabase() {
+abstract class AppDatabase : RoomDatabase() {
 
-//    abstract fun getResearchDao(): ResearchDao
+    abstract fun getResearchDao(): ResearchDao
 
     abstract fun getHydrobiontDao(): HydrobiontDao
 
-//    abstract fun getProbeDao(): ProbeDao
-//
-//    abstract fun getIndex(): IndexDao
-//
-//    abstract fun getIndexName(): IndexNameDao
-//
-//    abstract fun getImage(): ImageDao
+    abstract fun getProbeDao(): ProbeDao
+
+    abstract fun getIndexValueDao(): IndexValueDao
+
+    abstract fun getIndexNameDao(): IndexNameDao
+
+    abstract fun getImageDao(): ImageDao
 }

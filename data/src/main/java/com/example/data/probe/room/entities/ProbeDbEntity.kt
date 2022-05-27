@@ -30,13 +30,23 @@ import com.example.data.research.room.entities.ResearchDbEntity
 data class ProbeDbEntity(
     @ColumnInfo(name = "research_id") val researchId: Long,
     @ColumnInfo(name = "hydrobiont_id") val hydrobiontId: Long,
-    val amount: Int,
-    val percent: Double
+    @ColumnInfo(defaultValue = "0") val amount: Int,
+    @ColumnInfo(defaultValue = "0.0") val percent: Double
 ) {
+
     fun toProbe(): Probe = Probe(
         researchId = researchId,
         hydrobiontId = hydrobiontId,
         amount = amount,
         percent = percent
     )
+
+    companion object {
+        fun fromProbe(probe: Probe) = ProbeDbEntity(
+            researchId = probe.researchId,
+            hydrobiontId = probe.hydrobiontId,
+            amount = probe.amount,
+            percent = probe.percent
+        )
+    }
 }

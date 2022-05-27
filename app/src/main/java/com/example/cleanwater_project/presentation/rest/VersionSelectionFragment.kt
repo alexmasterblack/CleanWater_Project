@@ -8,6 +8,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.cleanwater_project.R
 import com.example.cleanwater_project.presentation.adapters.ViewPagerAdapter
+import com.example.data.repository.Repositories
 import com.google.android.material.snackbar.Snackbar
 import me.relex.circleindicator.CircleIndicator3
 

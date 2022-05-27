@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "bb126463292ad43a0b2be5b87320cfc7",
+    "identityHash": "fbd4f1f1fa0040bf0b1dac83f72b2e5f",
     "entities": [
       {
         "tableName": "research",
@@ -317,7 +317,7 @@
         ]
       },
       {
-        "tableName": "index",
+        "tableName": "index_value",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`research_id` INTEGER NOT NULL, `index_name_id` INTEGER NOT NULL, `value` INTEGER NOT NULL, `water_quality` TEXT NOT NULL, PRIMARY KEY(`research_id`, `index_name_id`), FOREIGN KEY(`research_id`) REFERENCES `research`(`id`) ON UPDATE CASCADE ON DELETE CASCADE , FOREIGN KEY(`index_name_id`) REFERENCES `index_name`(`id`) ON UPDATE CASCADE ON DELETE CASCADE )",
         "fields": [
           {
@@ -452,7 +452,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'bb126463292ad43a0b2be5b87320cfc7')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'fbd4f1f1fa0040bf0b1dac83f72b2e5f')"
     ]
   }
 }

@@ -1,6 +1,6 @@
 package com.example.data.index.entities
 
-data class Index(
+data class IndexValue(
     val researchId: Long,
     val indexNameId: Long,
     val value: Int,

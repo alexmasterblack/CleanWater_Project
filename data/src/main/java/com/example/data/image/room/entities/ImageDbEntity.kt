@@ -24,9 +24,11 @@ data class ImageDbEntity(
     @ColumnInfo(name = "hydrobiont_id") val hydrobiontId: Long,
     @ColumnInfo(name = "image_path") val imagePath: Int,
 ) {
-    fun toImage(): Image = Image(
-        id = id,
-        hydrobiontId = hydrobiontId,
-        imagePath = imagePath
-    )
+    companion object {
+        fun fromImage(image: Image) = ImageDbEntity(
+            id = image.id,
+            hydrobiontId = image.hydrobiontId,
+            imagePath = image.imagePath
+        )
+    }
 }

@@ -2,7 +2,7 @@ package com.example.data.research.entities
 
 data class Research(
     // айди, номер
-    val id: Long,
+    val id: Long = 0,
     // коллекционный номер, полевой
     val collectionNumber: Long,
     // дата исследования с временем

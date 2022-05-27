@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.data.research.entities.Research
+import com.example.data.research.entities.ResearchMain
 
 @Entity(
     tableName = "research",
@@ -41,6 +42,7 @@ data class ResearchDbEntity(
     @ColumnInfo(name = "sampling_method") val samplingMethod: String,
     @ColumnInfo(name = "type_sampler") val typeSampler: String
 ) {
+
     fun toResearch(): Research = Research(
         id = id,
         collectionNumber = collectionNumber,
@@ -74,4 +76,40 @@ data class ResearchDbEntity(
         samplingMethod = samplingMethod,
         typeSampler = typeSampler
     )
+
+    companion object {
+        fun fromResearch(research: Research) = ResearchDbEntity(
+            id = 0,
+            collectionNumber = research.collectionNumber,
+            date = research.date,
+            latitudeByHand = research.latitudeByHand,
+            latitudeAuto = research.latitudeAuto,
+            longitudeByHand = research.longitudeByHand,
+            longitudeAuto = research.longitudeAuto,
+            region = research.region,
+            district = research.district,
+            settlement = research.settlement,
+            nameReservoir = research.nameReservoir,
+            riverBasin = research.riverBasin,
+            lengthStream = research.lengthStream,
+            airTemperature = research.airTemperature,
+            waterTemperature = research.waterTemperature,
+            comment = research.comment,
+            partRiverBasin = research.partRiverBasin,
+            longitudinalZone = research.longitudinalZone,
+            longitudinalElementRiverbed = research.longitudinalElementRiverbed,
+            transverseElementRiverbed = research.transverseElementRiverbed,
+            currentVelosity = research.currentVelosity,
+            widthRiverbed = research.widthRiverbed,
+            averageDepth = research.averageDepth,
+            depthSamplingPoint = research.depthSamplingPoint,
+            bottomSubstrateType = research.bottomSubstrateType,
+            developmentAquaticVegetation = research.developmentAquaticVegetation,
+            typeRiparianVegetation = research.typeRiparianVegetation,
+            illuminationRiverbed = research.illuminationRiverbed,
+            anthropogenicImpact = research.anthropogenicImpact,
+            samplingMethod = research.samplingMethod,
+            typeSampler = research.typeSampler
+        )
+    }
 }

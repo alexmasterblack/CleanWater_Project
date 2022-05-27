@@ -3,12 +3,12 @@ package com.example.data.index.room.entities
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
-import com.example.data.index.entities.Index
+import com.example.data.index.entities.IndexValue
 import com.example.data.indices.room.entities.IndexNameDbEntity
 import com.example.data.research.room.entities.ResearchDbEntity
 
 @Entity(
-    tableName = "index",
+    tableName = "index_value",
     primaryKeys = ["research_id", "index_name_id"],
     foreignKeys = [
         ForeignKey(
@@ -27,16 +27,26 @@ import com.example.data.research.room.entities.ResearchDbEntity
         )
     ]
 )
-data class IndexDbEntity(
+data class IndexValueDbEntity(
     @ColumnInfo(name = "research_id") val researchId: Long,
     @ColumnInfo(name = "index_name_id") val indexNameId: Long,
     val value: Int,
     @ColumnInfo(name = "water_quality") val waterQuality: String
 ) {
-    fun toIndex(): Index = Index(
+
+    fun toIndex(): IndexValue = IndexValue(
         researchId = researchId,
         indexNameId = indexNameId,
         value = value,
         waterQuality = waterQuality
     )
+
+    companion object {
+        fun fromIndex(indexValue: IndexValue) = IndexValueDbEntity(
+            researchId = indexValue.researchId,
+            indexNameId = indexValue.indexNameId,
+            value = indexValue.value,
+            waterQuality = indexValue.waterQuality
+        )
+    }
 }
