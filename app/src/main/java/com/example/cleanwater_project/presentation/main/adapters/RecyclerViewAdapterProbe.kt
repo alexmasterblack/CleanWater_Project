@@ -1,4 +1,4 @@
-package com.example.cleanwater_project.presentation.total.adapters
+package com.example.cleanwater_project.presentation.main.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cleanwater_project.R
+import com.example.cleanwater_project.presentation.total.adapters.RecyclerViewAdapter
 import com.example.data.probe.entities.Probe
 import com.example.data.repository.Repositories
 import kotlinx.coroutines.GlobalScope
@@ -13,12 +14,10 @@ import kotlinx.coroutines.launch
 import java.math.RoundingMode
 import java.text.DecimalFormat
 
-class RecyclerViewAdapter() :
+class RecyclerViewAdapterProbe :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val data: MutableList<Probe> = mutableListOf()
-
-    private var total: Int = 1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ProbeViewHolder(
@@ -28,7 +27,7 @@ class RecyclerViewAdapter() :
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as ProbeViewHolder).bind(data[position])
+        (holder as RecyclerViewAdapterProbe.ProbeViewHolder).bind(data[position])
     }
 
     override fun getItemCount(): Int {
@@ -39,12 +38,6 @@ class RecyclerViewAdapter() :
         this.data.clear()
         this.data.addAll(data)
         notifyDataSetChanged()
-    }
-
-    fun setTotal(amount: Int?) {
-        if (amount != null) {
-            total = amount
-        }
     }
 
     inner class ProbeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -91,22 +84,8 @@ class RecyclerViewAdapter() :
             hydrobiontName.text = name[item.hydrobiontId.toInt() - 1]
             hydrobiontLatinName.text = latinName[item.hydrobiontId.toInt() - 1]
             amount.text = item.amount.toString()
+            percentage.text = item.percent.toString()
 
-            val df = DecimalFormat("#.##")
-            df.roundingMode = RoundingMode.DOWN
-            percentage.text =
-                df.format((item.amount.toDouble() / total.toDouble()) * 100).toString()
-
-            GlobalScope.launch {
-                Repositories.probeRepository.updateProbeAmount(
-                    Probe(
-                        item.researchId,
-                        item.hydrobiontId,
-                        item.amount,
-                        df.format((item.amount.toDouble() / total.toDouble()) * 100).toDouble()
-                    )
-                )
-            }
         }
     }
 }

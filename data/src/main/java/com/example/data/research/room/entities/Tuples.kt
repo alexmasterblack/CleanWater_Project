@@ -5,6 +5,7 @@ import androidx.room.PrimaryKey
 
 data class MainInfoTuples(
     @PrimaryKey(autoGenerate = true) val id: Long,
+    @ColumnInfo(name = "collection_number") val collectionNumber: Long,
     val date: String,
     val region: String,
     val district: String,

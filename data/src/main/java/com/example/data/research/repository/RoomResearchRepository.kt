@@ -9,6 +9,34 @@ import kotlinx.coroutines.flow.map
 
 class RoomResearchRepository(private val researchDao: ResearchDao) : ResearchRepository {
 
+    override suspend fun getResearch(id: Long) {
+        getResearchById(id)
+    }
+
+    override suspend fun getMainInfo(id: Long): Flow<ResearchMain?> {
+        return getMainResearchById(id)
+    }
+
+    override suspend fun getLastResearchId(): Flow<Long> {
+        return getLastId()
+    }
+
+    override suspend fun addResearch(research: Research) {
+        insertResearch(research)
+    }
+
+    override suspend fun getCardsResearch(): Flow<List<ResearchMain>> {
+        return getAllMainResearch()
+    }
+
+    override suspend fun deleteResearch(id: Long) {
+        deleteResearchById(id)
+    }
+
+    override suspend fun deleteLastResearch() {
+        deleteLast()
+    }
+
     private fun getResearchById(id: Long): Flow<Research?> {
         return researchDao.getById(id).map { it?.toResearch() }
     }
@@ -19,6 +47,7 @@ class RoomResearchRepository(private val researchDao: ResearchDao) : ResearchRep
             it.map { mainInfoTuples ->
                 ResearchMain(
                     mainInfoTuples.id,
+                    mainInfoTuples.collectionNumber,
                     mainInfoTuples.date,
                     mainInfoTuples.region,
                     mainInfoTuples.district,
@@ -27,26 +56,43 @@ class RoomResearchRepository(private val researchDao: ResearchDao) : ResearchRep
                     mainInfoTuples.latitudeByHand,
                     mainInfoTuples.longitudeByHand
                 )
-            }
+            }.reversed()
         }
     }
 
-    private suspend fun getMainResearchById(id: Long): ResearchMain {
+    private fun getMainResearchById(id: Long): Flow<ResearchMain?> {
         val tuple = researchDao.getMainById(id)
-        return ResearchMain(
-            tuple.id,
-            tuple.date,
-            tuple.region,
-            tuple.district,
-            tuple.settlement,
-            tuple.nameReservoir,
-            tuple.latitudeByHand,
-            tuple.longitudeByHand
-        )
+        return tuple.map {
+            it?.let { it1 ->
+                ResearchMain(
+                    it1.id,
+                    it.collectionNumber,
+                    it.date,
+                    it.region,
+                    it.district,
+                    it.settlement,
+                    it.nameReservoir,
+                    it.latitudeByHand,
+                    it.longitudeByHand
+                )
+            }
+        }
     }
 
     private suspend fun insertResearch(research: Research) {
         val entity = ResearchDbEntity.fromResearch(research)
         researchDao.insertResearch(entity)
+    }
+
+    private suspend fun deleteResearchById(id: Long) {
+        researchDao.deleteResearchById(id)
+    }
+
+    private suspend fun deleteLast() {
+        researchDao.deleteLast()
+    }
+
+    private fun getLastId(): Flow<Long> {
+        return researchDao.getLastId()
     }
 }

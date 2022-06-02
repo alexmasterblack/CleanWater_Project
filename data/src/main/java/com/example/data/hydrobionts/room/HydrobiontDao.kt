@@ -9,8 +9,8 @@ import kotlinx.coroutines.flow.Flow
 interface HydrobiontDao {
 
     @Query("SELECT * FROM hydrobionts WHERE id=:id")
-    fun getById(id: Long): Flow<HydrobiontDbEntity?>
+    fun getById(id: Long): Flow<HydrobiontDbEntity>
 
     @Query("SELECT * FROM hydrobionts")
-    fun getAll(): Flow<List<HydrobiontDbEntity?>>
+    fun getAll(): Flow<List<HydrobiontDbEntity>>
 }

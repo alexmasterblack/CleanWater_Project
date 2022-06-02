@@ -30,7 +30,7 @@ import com.example.data.research.room.entities.ResearchDbEntity
 data class IndexValueDbEntity(
     @ColumnInfo(name = "research_id") val researchId: Long,
     @ColumnInfo(name = "index_name_id") val indexNameId: Long,
-    val value: Int,
+    val value: Double,
     @ColumnInfo(name = "water_quality") val waterQuality: String
 ) {
 

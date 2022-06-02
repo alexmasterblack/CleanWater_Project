@@ -32,4 +32,35 @@
     <string name="further">Далее</string>
     <string name="hydrobiont_image">Гидробионт</string>
     <string name="result">Итог</string>
+
+    <string-array name="length_stream">
+        <item>Ручей (&lt; 1км)</item>
+        <item>Ручей (&gt;1км &lt;5 км)</item>
+        <item>Ручей (&gt;5 км)</item>
+    </string-array>
+    <string-array name="part_river_basin">
+        <item>Верховье</item>
+        <item>Средняя часть</item>
+        <item>Низовье</item>
+        <item>Устье</item>
+    </string-array>
+    <string-array name="longitudinal_zone">
+        <item>Креналь</item>
+        <item>Ритраль </item>
+        <item>Потамаль </item>
+    </string-array>
+    <string-array name="longitudinal_element_riverbed">
+        <item>Перекат</item>
+        <item>Слив</item>
+        <item>Плес</item>
+    </string-array>
+    <string-array name="transverse_element_riverbed">
+        <item>Рипаль</item>
+        <item>Медиаль</item>
+    </string-array>
+    <string-array name="bottom_substrate_type">
+        <item>Песчанный</item>
+        <item>Песчанно-илистый</item>
+        <item>Илистый</item>
+    </string-array>
 </resources>

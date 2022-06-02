@@ -8,9 +8,33 @@ import kotlinx.coroutines.flow.map
 
 class RoomProbeRepository(private val probeDao: ProbeDao) : ProbeRepository {
 
-    private fun getAllProbeByResearchId(researchId: Long): Flow<List<Probe?>> {
+    override suspend fun addProbe(probe: Probe) {
+        insertProbe(probe)
+    }
+
+    override suspend fun getAllProbe(researchId: Long): Flow<List<Probe>> {
+        return getAllProbeByResearchId(researchId)
+    }
+
+    override suspend fun getTotalAmount(researchId: Long): Flow<Int?> {
+        return getCountAmount(researchId)
+    }
+
+    override suspend fun getIndexEPT(researchId: Long): Flow<Double?> {
+        return getIndexEPTByResearchId(researchId)
+    }
+
+    override suspend fun updateProbeAmount(probe: Probe) {
+        updateProbe(probe)
+    }
+
+    private fun getAllProbeByResearchId(researchId: Long): Flow<List<Probe>> {
         return probeDao.getAllByResearchId(researchId)
-            .map { it.map { probeDbEntity -> probeDbEntity?.toProbe() } }
+            .map { it.map { probeDbEntity -> probeDbEntity.toProbe() } }
+    }
+
+    private fun getIndexEPTByResearchId(researchId: Long): Flow<Double?> {
+        return probeDao.getIndexEPTByResearchId(researchId)
     }
 
     private suspend fun updateProbe(probe: Probe) {
@@ -22,6 +46,10 @@ class RoomProbeRepository(private val probeDao: ProbeDao) : ProbeRepository {
                 probe.percent
             )
         )
+    }
+
+    private fun getCountAmount(researchId: Long): Flow<Int?> {
+        return probeDao.getCountAmount(researchId)
     }
 
     private suspend fun insertProbe(probe: Probe) {

@@ -10,6 +10,8 @@ import com.example.data.index.repository.IndexValueRepository
 import com.example.data.index.repository.RoomIndexValueRepository
 import com.example.data.indices.repository.IndexNameRepository
 import com.example.data.indices.repository.RoomIndexNameRepository
+import com.example.data.probe.repository.ProbeRepository
+import com.example.data.probe.repository.RoomProbeRepository
 import com.example.data.research.repository.ResearchRepository
 import com.example.data.research.repository.RoomResearchRepository
 import com.example.data.room.AppDatabase
@@ -41,6 +43,10 @@ object Repositories {
 
     val researchRepository: ResearchRepository by lazy {
         RoomResearchRepository(database.getResearchDao())
+    }
+
+    val probeRepository: ProbeRepository by lazy {
+        RoomProbeRepository(database.getProbeDao())
     }
 
     val indexValueRepository: IndexValueRepository by lazy {

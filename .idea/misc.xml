@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/CleanWater_Project/app/src/main/res/drawable/check_divider.xml" value="0.1855" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/drawable/color_indicator.xml" value="0.1295" />
+        <entry key="..\:/CleanWater_Project/app/src/main/res/drawable/error_status.xml" value="0.1345" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/drawable/ic_block_footer.xml" value="0.1855" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/drawable/ic_block_percent.xml" value="0.1855" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/drawable/ic_block_total_top.xml" value="0.1855" />
@@ -15,6 +16,7 @@
         <entry key="..\:/CleanWater_Project/app/src/main/res/drawable/ic_table_benefits_1.xml" value="0.1535" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/drawable/ic_vudi_index.xml" value="0.1985" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/drawable/ic_water_quality.xml" value="0.2055" />
+        <entry key="..\:/CleanWater_Project/app/src/main/res/drawable/normal_status.xml" value="0.2055" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/drawable/rounded_edit_text.xml" value="0.1535" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/drawable/splash_background.xml" value="0.1605" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/drawable/table_benefits.xml" value="0.1845" />
@@ -24,8 +26,10 @@
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout-v23/version_selection_fragment.xml" value="0.25" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/activity_main.xml" value="0.24615384615384617" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/check_research_fragment.xml" value="0.25" />
+        <entry key="..\:/CleanWater_Project/app/src/main/res/layout/dropdown_item.xml" value="0.25" />
+        <entry key="..\:/CleanWater_Project/app/src/main/res/layout/dropdown_menu.xml" value="0.25" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/indices_table_fragment.xml" value="0.2" />
-        <entry key="..\:/CleanWater_Project/app/src/main/res/layout/input_research_fragment.xml" value="0.24166666666666667" />
+        <entry key="..\:/CleanWater_Project/app/src/main/res/layout/input_research_fragment.xml" value="0.21798365122615804" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/login_fragment.xml" value="0.25" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/main_fragment.xml" value="0.25" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/main_info_fragment.xml" value="0.25" />
@@ -46,7 +50,7 @@
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/total_fragment.xml" value="0.264" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/total_table_item.xml" value="0.25" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/version_selection_fragment.xml" value="0.264" />
-        <entry key="..\:/CleanWater_Project/app/src/main/res/layout/welcome_fragment.xml" value="0.24615384615384617" />
+        <entry key="..\:/CleanWater_Project/app/src/main/res/layout/welcome_fragment.xml" value="0.25" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/menu/main_menu.xml" value="0.25" />
       </map>
     </option>

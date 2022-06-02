@@ -6,15 +6,22 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 class RoomHydrobiontRepository(private val hydrobiontDao: HydrobiontDao) : HydrobiontRepository {
-
-    private fun getHydrobiontById(id: Long): Flow<Hydrobiont?> {
-        return hydrobiontDao.getById(id)
-            .map { it?.toHydrobiont() }
+    override suspend fun getHydrobiont(id: Long): Flow<Hydrobiont> {
+        return getHydrobiontById(id)
     }
 
-    private fun getAllHydrobiont(): Flow<List<Hydrobiont?>> {
+    override suspend fun getHydrobionts(): Flow<List<Hydrobiont>> {
+        return getAllHydrobiont()
+    }
+
+    private fun getHydrobiontById(id: Long): Flow<Hydrobiont> {
+        return hydrobiontDao.getById(id)
+            .map { it.toHydrobiont() }
+    }
+
+    private fun getAllHydrobiont(): Flow<List<Hydrobiont>> {
         return hydrobiontDao.getAll()
-            .map { it.map { hydrobiontDbEntity -> hydrobiontDbEntity?.toHydrobiont() } }
+            .map { it.map { hydrobiontDbEntity -> hydrobiontDbEntity.toHydrobiont() } }
     }
 
 }

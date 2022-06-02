@@ -8,6 +8,10 @@ import kotlinx.coroutines.flow.map
 
 class RoomIndexValueRepository(private val indexValueDao: IndexValueDao) : IndexValueRepository {
 
+    override suspend fun addIndexValue(indexValue: IndexValue) {
+        insertIndex(indexValue)
+    }
+
     private fun getAllIndicesByResearchId(researchId: Long): Flow<List<IndexValue?>> {
         return indexValueDao.getAllByResearchId(researchId)
             .map { it.map { indexDbEntity -> indexDbEntity?.toIndex() } }
@@ -20,7 +24,12 @@ class RoomIndexValueRepository(private val indexValueDao: IndexValueDao) : Index
 
     private suspend fun updateIndex(indexValue: IndexValue) {
         indexValueDao.updateIndex(
-            IndexValueDbEntity(indexValue.researchId, indexValue.indexNameId, indexValue.value, indexValue.waterQuality)
+            IndexValueDbEntity(
+                indexValue.researchId,
+                indexValue.indexNameId,
+                indexValue.value,
+                indexValue.waterQuality
+            )
         )
     }
 }

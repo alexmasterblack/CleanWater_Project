@@ -26,7 +26,11 @@
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:popExitAnim="@anim/nav_default_pop_exit_anim">
+            <argument
+                android:name="researchId"
+                app:argType="long" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -49,7 +53,17 @@
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:popExitAnim="@anim/nav_default_pop_exit_anim">
+            <argument
+                android:name="researchId"
+                app:argType="long" />
+            <argument
+                android:name="hydrobiontId"
+                app:argType="long" />
+            <argument
+                android:name="amount"
+                app:argType="integer" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/checkResearchFragment"
@@ -61,12 +75,16 @@
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:popExitAnim="@anim/nav_default_pop_exit_anim">
+            <argument
+                android:name="researchId"
+                app:argType="long" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/totalFragment"
         android:name="com.example.cleanwater_project.presentation.total.TotalFragment"
-        android:label="TotalFragment" >
+        android:label="TotalFragment">
         <action
             android:id="@+id/action_totalFragment_to_inputResearchFragment"
             app:destination="@id/inputResearchFragment"
@@ -75,7 +93,10 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@id/main_navigation"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="researchId"
+            app:argType="long" />
     </fragment>
     <navigation
         android:id="@+id/sample_navigation"
@@ -83,7 +104,17 @@
         <fragment
             android:id="@+id/sampleDetailsFragment"
             android:name="com.example.cleanwater_project.presentation.sample.SampleDetailsFragment"
-            android:label="SampleDetailsFragment" />
+            android:label="SampleDetailsFragment">
+            <argument
+                android:name="researchId"
+                app:argType="long" />
+            <argument
+                android:name="hydrobiontId"
+                app:argType="long" />
+            <argument
+                android:name="amount"
+                app:argType="integer" />
+        </fragment>
     </navigation>
     <navigation
         android:id="@+id/research_navigation"
@@ -91,6 +122,10 @@
         <fragment
             android:id="@+id/researchDetailsFragment"
             android:name="com.example.cleanwater_project.presentation.main.ResearchDetailsFragment"
-            android:label="ResearchDetailsFragment" />
+            android:label="ResearchDetailsFragment">
+            <argument
+                android:name="researchId"
+                app:argType="long" />
+        </fragment>
     </navigation>
 </navigation>
