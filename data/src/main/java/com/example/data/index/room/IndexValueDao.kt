@@ -10,6 +10,9 @@ interface IndexValueDao {
     @Query("SELECT * FROM index_value WHERE research_id=:researchId")
     fun getAllByResearchId(researchId: Long): Flow<List<IndexValueDbEntity?>>
 
+    @Query("SELECT * FROM index_value WHERE research_id=:researchId AND index_name_id=:indexNameId")
+    fun getEPTIndexById(researchId: Long, indexNameId: Long): Flow<IndexValueDbEntity>
+
     @Insert(entity = IndexValueDbEntity::class, onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertIndex(indexValueDbEntity: IndexValueDbEntity)
 

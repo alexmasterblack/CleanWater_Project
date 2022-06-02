@@ -12,9 +12,17 @@ class RoomIndexValueRepository(private val indexValueDao: IndexValueDao) : Index
         insertIndex(indexValue)
     }
 
+    override suspend fun getEPTIndex(researchId: Long, indexNameId: Long): Flow<IndexValue> {
+        return getEPTIndexById(researchId, indexNameId)
+    }
+
     private fun getAllIndicesByResearchId(researchId: Long): Flow<List<IndexValue?>> {
         return indexValueDao.getAllByResearchId(researchId)
-            .map { it.map { indexDbEntity -> indexDbEntity?.toIndex() } }
+            .map { it.map { indexDbEntity -> indexDbEntity?.toIndexValue() } }
+    }
+
+    private fun getEPTIndexById(researchId: Long, indexNameId: Long): Flow<IndexValue> {
+        return indexValueDao.getEPTIndexById(researchId, indexNameId).map { it.toIndexValue() }
     }
 
     private suspend fun insertIndex(indexValue: IndexValue) {

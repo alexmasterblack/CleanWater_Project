@@ -34,7 +34,7 @@ data class IndexValueDbEntity(
     @ColumnInfo(name = "water_quality") val waterQuality: String
 ) {
 
-    fun toIndex(): IndexValue = IndexValue(
+    fun toIndexValue(): IndexValue = IndexValue(
         researchId = researchId,
         indexNameId = indexNameId,
         value = value,

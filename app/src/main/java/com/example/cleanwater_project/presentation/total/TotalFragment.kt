@@ -28,9 +28,9 @@ class TotalFragment : Fragment(R.layout.total_fragment) {
 
     private val researchId by lazy { args.researchId }
 
-//    private val researchId = MutableLiveData<Long>()
-
     private val indexEPT = MutableLiveData<Double>()
+
+    private var waterQuality = ""
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -38,16 +38,6 @@ class TotalFragment : Fragment(R.layout.total_fragment) {
         view.findViewById<Toolbar>(R.id.toolbar).setNavigationOnClickListener {
             findNavController().navigateUp()
         }
-
-//        GlobalScope.launch {
-//            Repositories.researchRepository.getLastResearchId().collect {
-//                researchId.postValue(it)
-//            }
-//        }
-
-//        researchId.observe(requireActivity()) {
-//            getIndexEPT(it)
-//        }
 
         getIndexEPT(researchId)
 
@@ -77,16 +67,34 @@ class TotalFragment : Fragment(R.layout.total_fragment) {
                     id,
                     1,
                     index,
-                    ""
+                    waterQuality
                 )
             )
         }
     }
 
     private fun setIndexEPT(view: View, index: Double?) {
-        val df = DecimalFormat("#.##")
-        df.roundingMode = RoundingMode.DOWN
+        val indexEPT = view.findViewById<TextView>(R.id.ept_index)
 
-        view.findViewById<TextView>(R.id.ept_index)?.text = df.format(index).toString()
+        if (index != null) {
+            if (index > 60) {
+                waterQuality = "Очень хорошее"
+                indexEPT?.setTextColor(resources.getColor(R.color.very_good_quality))
+            } else if (index > 55 && index <= 60) {
+                waterQuality = "Хорошее"
+                indexEPT?.setTextColor(resources.getColor(R.color.good_quality))
+            } else if (index > 40 && index <= 55) {
+                waterQuality = "Посредственное"
+                indexEPT?.setTextColor(resources.getColor(R.color.not_bad_quality))
+            } else if (index > 7 && index <= 40) {
+                waterQuality = "Плохое"
+                indexEPT?.setTextColor(resources.getColor(R.color.bad_quality))
+            } else if (index <= 7) {
+                waterQuality = "Очень плохое"
+                indexEPT?.setTextColor(resources.getColor(R.color.very_bad_quality))
+            }
+
+            indexEPT?.text = waterQuality
+        }
     }
 }

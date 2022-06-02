@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.cleanwater_project.R
 import com.example.cleanwater_project.presentation.main.adapters.RecyclerViewAdapterProbe
 import com.example.cleanwater_project.presentation.total.adapters.RecyclerViewAdapter
+import com.example.data.index.entities.IndexValue
 import com.example.data.probe.entities.Probe
 import com.example.data.repository.Repositories
 import com.example.data.research.entities.ResearchMain
@@ -37,7 +38,7 @@ class ResearchDetailsFragment : Fragment(R.layout.research_details_fragment) {
 
     private val total = MutableLiveData<Int?>()
 
-    private val indexEPT = MutableLiveData<Double>()
+    private val indexEPT = MutableLiveData<IndexValue>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -124,16 +125,27 @@ class ResearchDetailsFragment : Fragment(R.layout.research_details_fragment) {
 
     private fun getIndexEPT(id: Long) {
         GlobalScope.launch {
-            Repositories.probeRepository.getIndexEPT(id).collect {
+            Repositories.indexValueRepository.getEPTIndex(id, 1).collect {
                 indexEPT.postValue(it)
             }
         }
     }
 
-    private fun setIndexEPT(view: View, index: Double?) {
-        val df = DecimalFormat("#.##")
-        df.roundingMode = RoundingMode.DOWN
+    private fun setIndexEPT(view: View, index: IndexValue) {
+        val indexEPT = view.findViewById<TextView>(R.id.ept_index)
 
-        view.findViewById<TextView>(R.id.ept_index)?.text = df.format(index).toString()
+        if (index.waterQuality == "Очень хорошее") {
+            indexEPT?.setTextColor(resources.getColor(R.color.very_good_quality))
+        } else if (index.waterQuality == "Хорошее") {
+            indexEPT?.setTextColor(resources.getColor(R.color.good_quality))
+        } else if (index.waterQuality == "Посредственное") {
+            indexEPT?.setTextColor(resources.getColor(R.color.not_bad_quality))
+        } else if (index.waterQuality == "Плохое") {
+            indexEPT?.setTextColor(resources.getColor(R.color.bad_quality))
+        } else if (index.waterQuality == "Очень плохое") {
+            indexEPT?.setTextColor(resources.getColor(R.color.very_bad_quality))
+        }
+
+        indexEPT?.text = index.waterQuality
     }
 }

@@ -14,4 +14,9 @@
     <color name="light_sea">#F0F3F9</color>
     <color name="light_gray">#F5F5F5</color>
     <color name="text_gray">#878788</color>
+    <color name="very_good_quality">#22B085</color>
+    <color name="good_quality">#4C827E</color>
+    <color name="not_bad_quality">#755577</color>
+    <color name="bad_quality">#9C2C71</color>
+    <color name="very_bad_quality">#C4006A</color>
 </resources>
