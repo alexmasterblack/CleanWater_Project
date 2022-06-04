@@ -1,7 +1,6 @@
 package com.example.data.research.room
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.example.data.research.room.entities.MainInfoTuples
@@ -21,7 +20,7 @@ interface ResearchDao {
     fun getMainById(id: Long): Flow<MainInfoTuples?>
 
     @Insert(entity = ResearchDbEntity::class)
-    suspend fun insertResearch(researchDbEntity: ResearchDbEntity)
+    suspend fun insertResearch(researchDbEntity: ResearchDbEntity) : Long
 
     @Query("DELETE FROM research WHERE id=:id")
     suspend fun deleteResearchById(id: Long)

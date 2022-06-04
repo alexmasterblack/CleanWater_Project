@@ -30,12 +30,11 @@
             <argument
                 android:name="researchId"
                 app:argType="long" />
+            <argument
+                android:name="collectionNumber"
+                app:argType="long" />
         </action>
     </fragment>
-    <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.example.cleanwater_project.presentation.main.ProfileFragment"
-        android:label="ProfileFragment" />
     <fragment
         android:id="@+id/sampleFragment"
         android:name="com.example.cleanwater_project.presentation.sample.SampleFragment"
@@ -46,7 +45,11 @@
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:popExitAnim="@anim/nav_default_pop_exit_anim">
+            <argument
+                android:name="researchId"
+                app:argType="long" />
+        </action>
         <action
             android:id="@+id/action_sampleFragment_to_sampleDetailsFragment"
             app:destination="@id/sample_navigation"
@@ -80,6 +83,9 @@
                 android:name="researchId"
                 app:argType="long" />
         </action>
+        <argument
+            android:name="researchId"
+            app:argType="long" />
     </fragment>
     <fragment
         android:id="@+id/totalFragment"
@@ -125,6 +131,9 @@
             android:label="ResearchDetailsFragment">
             <argument
                 android:name="researchId"
+                app:argType="long" />
+            <argument
+                android:name="collectionNumber"
                 app:argType="long" />
         </fragment>
     </navigation>

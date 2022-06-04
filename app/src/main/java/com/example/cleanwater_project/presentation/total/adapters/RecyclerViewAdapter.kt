@@ -8,12 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.cleanwater_project.R
 import com.example.data.probe.entities.Probe
 import com.example.data.repository.Repositories
-import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import java.math.RoundingMode
 import java.text.DecimalFormat
 
-class RecyclerViewAdapter() :
+class RecyclerViewAdapter(private val coroutineScope: CoroutineScope) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val data: MutableList<Probe> = mutableListOf()
@@ -97,13 +97,13 @@ class RecyclerViewAdapter() :
             percentage.text =
                 df.format((item.amount.toDouble() / total.toDouble()) * 100).toString()
 
-            GlobalScope.launch {
+            coroutineScope.launch {
                 Repositories.probeRepository.updateProbeAmount(
                     Probe(
                         item.researchId,
                         item.hydrobiontId,
                         item.amount,
-                        df.format((item.amount.toDouble() / total.toDouble()) * 100).toDouble()
+                        (item.amount.toDouble() / total.toDouble()) * 100
                     )
                 )
             }

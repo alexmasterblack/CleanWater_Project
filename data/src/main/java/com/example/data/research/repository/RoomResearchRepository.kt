@@ -4,6 +4,7 @@ import com.example.data.research.entities.Research
 import com.example.data.research.entities.ResearchMain
 import com.example.data.research.room.ResearchDao
 import com.example.data.research.room.entities.ResearchDbEntity
+import io.reactivex.rxjava3.core.Single
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -21,8 +22,8 @@ class RoomResearchRepository(private val researchDao: ResearchDao) : ResearchRep
         return getLastId()
     }
 
-    override suspend fun addResearch(research: Research) {
-        insertResearch(research)
+    override suspend fun addResearch(research: Research): Long {
+        return insertResearch(research)
     }
 
     override suspend fun getCardsResearch(): Flow<List<ResearchMain>> {
@@ -79,9 +80,9 @@ class RoomResearchRepository(private val researchDao: ResearchDao) : ResearchRep
         }
     }
 
-    private suspend fun insertResearch(research: Research) {
+    private suspend fun insertResearch(research: Research): Long {
         val entity = ResearchDbEntity.fromResearch(research)
-        researchDao.insertResearch(entity)
+        return researchDao.insertResearch(entity)
     }
 
     private suspend fun deleteResearchById(id: Long) {

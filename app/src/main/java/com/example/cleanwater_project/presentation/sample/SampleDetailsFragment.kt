@@ -16,11 +16,12 @@ import com.example.data.hydrobionts.entities.Hydrobiont
 import com.example.data.probe.entities.Probe
 import com.example.data.repository.Repositories
 import com.google.android.material.slider.Slider
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import me.relex.circleindicator.CircleIndicator3
 
 class SampleDetailsFragment : Fragment(R.layout.sample_details_fragment) {
+
+    private val coroutineScope = CoroutineScope(Dispatchers.Main)
 
     private val args by navArgs<SampleDetailsFragmentArgs>()
 
@@ -32,14 +33,18 @@ class SampleDetailsFragment : Fragment(R.layout.sample_details_fragment) {
 
     private val data = MutableLiveData<Hydrobiont>()
 
-    private val tables =
-        mutableListOf(R.mipmap.ephemeroptera_1, R.mipmap.ephemeroptera_2)
+    private val tables = mutableListOf<Int>()
+
+    override fun onPause() {
+        super.onPause()
+        coroutineScope.cancel()
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         view.findViewById<Toolbar>(R.id.toolbar).setNavigationOnClickListener {
-            GlobalScope.launch {
+            coroutineScope.launch {
                 Repositories.probeRepository.updateProbeAmount(
                     Probe(
                         researchId,
@@ -53,7 +58,7 @@ class SampleDetailsFragment : Fragment(R.layout.sample_details_fragment) {
             findNavController().navigateUp()
         }
 
-        GlobalScope.launch {
+        coroutineScope.launch {
             Repositories.hydrobiontRepository.getHydrobiont(hydrobiontId).collect {
                 data.postValue(it)
             }
@@ -63,10 +68,11 @@ class SampleDetailsFragment : Fragment(R.layout.sample_details_fragment) {
             setHydrobiontInfo(view, it)
         }
 
+        setImages()
+
         setViewPagerAdapter(view)
 
         setSlider(view)
-
     }
 
     private fun setSlider(view: View) {
@@ -90,17 +96,56 @@ class SampleDetailsFragment : Fragment(R.layout.sample_details_fragment) {
 
     private fun setViewPagerAdapter(view: View) {
         val pager = view.findViewById<ViewPager2>(R.id.pager)
-        val adapter = ViewPagerAdapter(tables)
+        val adapter = ViewPagerAdapter()
         pager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         pager.adapter = adapter
+
+        adapter.setData(tables)
 
         val indicator = view.findViewById<CircleIndicator3>(R.id.indicator)
         indicator.setViewPager(pager)
     }
 
     private fun setHydrobiontInfo(view: View, hydrobiont: Hydrobiont) {
-        view.findViewById<TextView>(R.id.hydrobiont_name).text = hydrobiont.name
+        view.findViewById<TextView>(R.id.hydrobiont_name).text =
+            hydrobiont.name + " (" + hydrobiont.latinName + ")"
         view.findViewById<TextView>(R.id.information).text = hydrobiont.description
         view.findViewById<Slider>(R.id.slider).value = amount.toFloat()
+    }
+
+    private fun setImages() {
+        if (hydrobiontId.toInt() == 1) {
+            tables.add(R.mipmap.trichoptera_1)
+            tables.add(R.mipmap.trichoptera_2)
+            tables.add(R.mipmap.trichoptera_3)
+            tables.add(R.mipmap.trichoptera_4)
+        } else if (hydrobiontId.toInt() == 2) {
+            tables.add(R.mipmap.plecoptera_1)
+            tables.add(R.mipmap.plecoptera_2)
+            tables.add(R.mipmap.plecoptera_3)
+        } else if (hydrobiontId.toInt() == 3) {
+            tables.add(R.mipmap.ephemeroptera_1)
+            tables.add(R.mipmap.ephemeroptera_2)
+            tables.add(R.mipmap.ephemeroptera_3)
+            tables.add(R.mipmap.ephemeroptera_4)
+            tables.add(R.mipmap.ephemeroptera_5)
+            tables.add(R.mipmap.ephemeroptera_6)
+        } else if (hydrobiontId.toInt() == 4) {
+            tables.add(R.mipmap.odonata_1)
+        } else if (hydrobiontId.toInt() == 5) {
+            tables.add(R.mipmap.turbellaria_1)
+        } else if (hydrobiontId.toInt() == 6) {
+            tables.add(R.mipmap.isopoda_1)
+        } else if (hydrobiontId.toInt() == 7) {
+            tables.add(R.mipmap.hirudinea_1)
+        } else if (hydrobiontId.toInt() == 8 || hydrobiontId.toInt() == 9) {
+            tables.add(R.mipmap.mollusca_1)
+        } else if (hydrobiontId.toInt() == 10) {
+            tables.add(R.mipmap.chironomidae_1)
+            tables.add(R.mipmap.chironomidae_2)
+        } else if (hydrobiontId.toInt() == 11) {
+            tables.add(R.mipmap.oligochaeta_1)
+            tables.add(R.mipmap.oligochaeta_2)
+        }
     }
 }

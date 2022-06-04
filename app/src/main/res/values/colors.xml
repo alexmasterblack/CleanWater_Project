@@ -19,4 +19,18 @@
     <color name="not_bad_quality">#755577</color>
     <color name="bad_quality">#9C2C71</color>
     <color name="very_bad_quality">#C4006A</color>
+
+    <color name="hydrobiont_1">#8E3A73</color>
+    <color name="hydrobiont_2">#735877</color>
+    <color name="hydrobiont_3">#7D4D76</color>
+    <color name="hydrobiont_4">#59747C</color>
+    <color name="hydrobiont_5">#696279</color>
+    <color name="hydrobiont_6">#359A82</color>
+    <color name="hydrobiont_7">#46877E</color>
+    <color name="hydrobiont_8">#3C9380</color>
+    <color name="hydrobiont_9">#9D2A70</color>
+    <color name="hydrobiont_10">#903872</color>
+    <color name="hydrobiont_11">#359A82</color>
+    <color name="hydrobiont_12">#22AF85</color>
+    <color name="hydrobiont_13">#63697A</color>
 </resources>

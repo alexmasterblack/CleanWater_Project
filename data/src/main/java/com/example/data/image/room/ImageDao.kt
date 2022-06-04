@@ -11,8 +11,8 @@ import kotlinx.coroutines.flow.Flow
 interface ImageDao {
 
     @Query("SELECT image_path FROM image WHERE hydrobiont_id=:hydrobiontId")
-    fun getImagePathByHydrobiontId(hydrobiontId: Long): Flow<List<ImagePathTuples?>>
+    fun getImageByHydrobiontId(hydrobiontId: Long): Flow<List<ImagePathTuples>>
 
     @Insert(entity = ImageDbEntity::class)
-    suspend fun addImage(imageDbEntity: ImageDbEntity)
+    suspend fun insertImage(imageDbEntity: ImageDbEntity)
 }

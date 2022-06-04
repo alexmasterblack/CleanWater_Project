@@ -84,7 +84,11 @@ class RecyclerViewAdapterProbe :
             hydrobiontName.text = name[item.hydrobiontId.toInt() - 1]
             hydrobiontLatinName.text = latinName[item.hydrobiontId.toInt() - 1]
             amount.text = item.amount.toString()
-            percentage.text = item.percent.toString()
+
+            val df = DecimalFormat("#.##")
+            df.roundingMode = RoundingMode.DOWN
+
+            percentage.text = df.format(item.percent).toString()
 
         }
     }

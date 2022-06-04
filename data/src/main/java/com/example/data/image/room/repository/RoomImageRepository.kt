@@ -8,15 +8,21 @@ import kotlinx.coroutines.flow.map
 
 class RoomImageRepository(private val imageDao: ImageDao) : ImageRepository {
 
-    private fun getImagePathByHydrobiontId(hydrobiontId: Long): Flow<List<Int?>> {
-        val tuple = imageDao.getImagePathByHydrobiontId(hydrobiontId)
-        return tuple.map {
-            it.map { imagePathTuples -> imagePathTuples?.imagePath }
-        }
+    override suspend fun getImage(hydrobiontId: Long): Flow<List<Int>> {
+        return getImagePathByHydrobiontId(hydrobiontId)
     }
 
-    private suspend fun addImage(image: Image) {
+    override suspend fun addImage(image: Image) {
+        insertImage(image)
+    }
+
+    private fun getImagePathByHydrobiontId(hydrobiontId: Long): Flow<List<Int>> {
+        val tuple = imageDao.getImageByHydrobiontId(hydrobiontId)
+        return tuple.map { image -> image.map { it.imagePath } }
+    }
+
+    private suspend fun insertImage(image: Image) {
         val entity = ImageDbEntity.fromImage(image)
-        imageDao.addImage(entity)
+        imageDao.insertImage(entity)
     }
 }

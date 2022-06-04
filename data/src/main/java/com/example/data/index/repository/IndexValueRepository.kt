@@ -7,5 +7,9 @@ interface IndexValueRepository {
 
     suspend fun addIndexValue(indexValue: IndexValue)
 
+    suspend fun updateIndexValue(indexValue: IndexValue)
+
+    suspend fun checkExists(researchId: Long) : Flow<Int>
+
     suspend fun getEPTIndex(researchId: Long, indexNameId: Long): Flow<IndexValue>
 }

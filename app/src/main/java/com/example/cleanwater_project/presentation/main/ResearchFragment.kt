@@ -11,25 +11,32 @@ import com.example.cleanwater_project.R
 import com.example.cleanwater_project.presentation.main.adapters.RecyclerViewAdapter
 import com.example.data.repository.Repositories
 import com.example.data.research.entities.ResearchMain
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 class ResearchFragment : Fragment(R.layout.research_fragment) {
+
+    private val coroutineScope = CoroutineScope(Dispatchers.Main)
 
     private val data = MutableLiveData<List<ResearchMain>>()
 
     private val adapter = RecyclerViewAdapter {
         findNavController().navigate(
             ResearchFragmentDirections.actionResearchFragmentToResearchNavigation(
-                it.id
+                it.id,
+                it.collectionNumber
             )
         )
+    }
+
+    override fun onPause() {
+        super.onPause()
+        coroutineScope.cancel()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        GlobalScope.launch {
+        coroutineScope.launch {
             Repositories.researchRepository.getCardsResearch().collect {
                 data.postValue(it)
             }

@@ -1,15 +1,21 @@
 package com.example.cleanwater_project.presentation.main
 
+import android.annotation.SuppressLint
 import android.os.Bundle
-import android.text.TextUtils
+import android.os.Looper
+import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.cleanwater_project.R
+import com.example.data.probe.entities.Probe
 import com.example.data.repository.Repositories
 import com.example.data.research.entities.Research
+import com.google.android.gms.location.*
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.*
@@ -18,8 +24,31 @@ import org.joda.time.*
 
 class InputResearchFragment : Fragment(R.layout.input_research_fragment) {
 
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+
+    private lateinit var locationRequest: LocationRequest
+
+    private lateinit var locationCallback: LocationCallback
+
+    private val researchId = MutableLiveData<Long>()
+
+    override fun onPause() {
+        super.onPause()
+        stopLocationUpdates()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        startLocationUpdates()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        fusedLocationClient =
+            LocationServices.getFusedLocationProviderClient(this.requireActivity())
+
+        getLocationUpdates(view)
 
         view.findViewById<AutoCompleteTextView>(R.id.auto_complete_length_stream)
             .setAdapter(
@@ -88,7 +117,9 @@ class InputResearchFragment : Fragment(R.layout.input_research_fragment) {
                 view.findViewById<TextInputEditText>(R.id.input_collection_number)
             if (collectionNumber.text.toString().isEmpty()) {
                 collectionNumber.error = "Заполните поле"
+//                collectionNumber.setBackgroundResource(R.drawable.error_status)
             } else {
+//                collectionNumber.setBackgroundResource(R.drawable.normal_status)
                 check += 1
             }
 
@@ -108,30 +139,30 @@ class InputResearchFragment : Fragment(R.layout.input_research_fragment) {
             }
 
             val latitudeByHand = view.findViewById<TextInputEditText>(R.id.input_latitude_hand)
-            if (latitudeByHand.text.toString().isEmpty()) {
-                latitudeByHand.error = "Заполните поле"
-            } else {
-                check += 1
-            }
+//            if (latitudeByHand.text.toString().isEmpty()) {
+//                latitudeByHand.error = "Заполните поле"
+//            } else {
+//                check += 1
+//            }
 
             // может быть и не заполнено
             val latitudeAuto = view.findViewById<TextInputEditText>(R.id.input_latitude_auto)
 
             val longitudeByHand = view.findViewById<TextInputEditText>(R.id.input_longitude_hand)
-            if (longitudeByHand.text.toString().isEmpty()) {
-                longitudeByHand.error = "Заполните поле"
-            } else {
-                check += 1
-            }
+//            if (longitudeByHand.text.toString().isEmpty()) {
+//                longitudeByHand.error = "Заполните поле"
+//            } else {
+//                check += 1
+//            }
 
             val longitudeAuto = view.findViewById<TextInputEditText>(R.id.input_longitude_auto)
 
             val region = view.findViewById<TextInputEditText>(R.id.input_region)
-            if (region.text.toString().isEmpty()) {
-                region.error = "Заполните поле"
-            } else {
-                check += 1
-            }
+//            if (region.text.toString().isEmpty()) {
+//                region.error = "Заполните поле"
+//            } else {
+//                check += 1
+//            }
 
             val district = view.findViewById<TextInputEditText>(R.id.input_district)
             if (district.text.toString().isEmpty()) {
@@ -272,15 +303,15 @@ class InputResearchFragment : Fragment(R.layout.input_research_fragment) {
             val typeSampler =
                 view.findViewById<TextInputEditText>(R.id.input_type_sampler)
 
-            if (check == 20) {
+            if (check == 17) {
                 val research = Research(
                     0,
                     collectionNumber.text.toString().toLong(),
                     date.text.toString() + " " + time.text.toString(),
-                    latitudeByHand.text.toString(),
-                    latitudeAuto.text.toString(),
-                    longitudeByHand.text.toString(),
-                    longitudeAuto.text.toString(),
+                    latitudeByHand?.text.toString(),
+                    latitudeAuto?.text.toString(),
+                    longitudeByHand?.text.toString(),
+                    longitudeAuto?.text.toString(),
                     region.text.toString(),
                     district.text.toString(),
                     settlement.text.toString(),
@@ -308,11 +339,154 @@ class InputResearchFragment : Fragment(R.layout.input_research_fragment) {
                     typeSampler.text.toString()
                 )
 
-                GlobalScope.launch {
+                lifecycleScope.launch {
                     Repositories.researchRepository.addResearch(research)
                 }
+
+                lifecycleScope.launch {
+                    Repositories.researchRepository.getLastResearchId().collect {
+                        researchId.postValue(it)
+                    }
+                }
+
+                researchId.observe(requireActivity()) {
+                    setInitialProbes(it)
+                }
+
                 findNavController().navigate(R.id.action_inputResearchFragment_to_sampleFragment)
             }
         }
     }
+
+    private fun setInitialProbes(id: Long) {
+        val probes = listOf<Probe>(
+            Probe(
+                id,
+                1,
+                0,
+                0.0
+            ),
+            Probe(
+                id,
+                2,
+                0,
+                0.0
+            ),
+            Probe(
+                id,
+                3,
+                0,
+                0.0
+            ),
+            Probe(
+                id,
+                4,
+                0,
+                0.0
+            ),
+            Probe(
+                id,
+                5,
+                0,
+                0.0
+            ),
+            Probe(
+                id,
+                6,
+                0,
+                0.0
+            ),
+            Probe(
+                id,
+                7,
+                0,
+                0.0
+            ),
+            Probe(
+                id,
+                8,
+                0,
+                0.0
+            ),
+            Probe(
+                id,
+                9,
+                0,
+                0.0
+            ),
+            Probe(
+                id,
+                10,
+                0,
+                0.0
+            ),
+            Probe(
+                id,
+                11,
+                0,
+                0.0
+            ),
+            Probe(
+                id,
+                12,
+                0,
+                0.0
+            ),
+            Probe(
+                id,
+                13,
+                0,
+                0.0
+            ),
+        )
+
+        lifecycleScope.launch {
+            for (probe in probes) {
+                Repositories.probeRepository.addProbe(probe)
+            }
+        }
+    }
+
+    private fun getLocationUpdates(view: View) {
+        fusedLocationClient =
+            LocationServices.getFusedLocationProviderClient(this.requireActivity())
+
+        locationRequest = LocationRequest.create()
+            .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+            .setFastestInterval(50000)
+            .setSmallestDisplacement(170f)
+            .setInterval(50000)
+
+        locationCallback = object : LocationCallback() {
+            override fun onLocationResult(p0: LocationResult) {
+                if (p0.locations.isNotEmpty()) {
+                    val location = p0.lastLocation
+
+                    Log.d(
+                        "Location",
+                        "Latitude: ${location.latitude}, Longitude: ${location.longitude}"
+                    )
+
+                    view.findViewById<TextInputEditText>(R.id.input_longitude_auto)
+                        .setText(location.longitude.toString())
+                    view.findViewById<TextInputEditText>(R.id.input_latitude_auto)
+                        .setText(location.latitude.toString())
+                }
+            }
+        }
+    }
+
+    @SuppressLint("MissingPermission")
+    private fun startLocationUpdates() {
+        fusedLocationClient.requestLocationUpdates(
+            locationRequest,
+            locationCallback,
+            Looper.getMainLooper()
+        )
+    }
+
+    private fun stopLocationUpdates() {
+        fusedLocationClient.removeLocationUpdates(locationCallback)
+    }
+
 }

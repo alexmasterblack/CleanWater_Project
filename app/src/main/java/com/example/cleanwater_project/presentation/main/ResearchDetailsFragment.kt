@@ -1,7 +1,9 @@
 package com.example.cleanwater_project.presentation.main
 
+import android.graphics.Paint
 import android.os.Bundle
 import android.view.View
+import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
@@ -14,21 +16,26 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cleanwater_project.R
 import com.example.cleanwater_project.presentation.main.adapters.RecyclerViewAdapterProbe
-import com.example.cleanwater_project.presentation.total.adapters.RecyclerViewAdapter
 import com.example.data.index.entities.IndexValue
 import com.example.data.probe.entities.Probe
 import com.example.data.repository.Repositories
 import com.example.data.research.entities.ResearchMain
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import java.math.RoundingMode
-import java.text.DecimalFormat
+import com.github.mikephil.charting.charts.Chart
+import com.github.mikephil.charting.charts.PieChart
+import com.github.mikephil.charting.data.PieData
+import com.github.mikephil.charting.data.PieDataSet
+import com.github.mikephil.charting.data.PieEntry
+import kotlinx.coroutines.*
 
 class ResearchDetailsFragment : Fragment(R.layout.research_details_fragment) {
+
+    private val coroutineScope = CoroutineScope(Dispatchers.Main)
 
     private val args by navArgs<ResearchDetailsFragmentArgs>()
 
     private val researchId by lazy { args.researchId }
+
+    private val collectionNumber by lazy { args.collectionNumber }
 
     private val data = MutableLiveData<List<Probe>>()
 
@@ -40,8 +47,16 @@ class ResearchDetailsFragment : Fragment(R.layout.research_details_fragment) {
 
     private val indexEPT = MutableLiveData<IndexValue>()
 
+    override fun onPause() {
+        super.onPause()
+        coroutineScope.cancel()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        view.findViewById<Toolbar>(R.id.toolbar).title =
+            "Исследование № $collectionNumber"
 
         view.findViewById<Toolbar>(R.id.toolbar).setNavigationOnClickListener {
             findNavController().navigateUp()
@@ -65,6 +80,10 @@ class ResearchDetailsFragment : Fragment(R.layout.research_details_fragment) {
         }
 
         setRecyclerViewAdapter(view)
+
+        data.observe(requireActivity()) {
+            setupPieChart(view, it)
+        }
     }
 
     private fun setRecyclerViewAdapter(view: View) {
@@ -96,7 +115,7 @@ class ResearchDetailsFragment : Fragment(R.layout.research_details_fragment) {
     }
 
     private fun getMainInfo(id: Long) {
-        GlobalScope.launch {
+        coroutineScope.launch {
             Repositories.researchRepository.getMainInfo(id).collect {
                 main.postValue(it)
             }
@@ -108,7 +127,7 @@ class ResearchDetailsFragment : Fragment(R.layout.research_details_fragment) {
     }
 
     private fun getTotalAmount(id: Long) {
-        GlobalScope.launch {
+        coroutineScope.launch {
             Repositories.probeRepository.getTotalAmount(id).collect {
                 total.postValue(it)
             }
@@ -116,7 +135,7 @@ class ResearchDetailsFragment : Fragment(R.layout.research_details_fragment) {
     }
 
     private fun getProbeDataById(id: Long) {
-        GlobalScope.launch {
+        coroutineScope.launch {
             Repositories.probeRepository.getAllProbe(id).collect {
                 data.postValue(it.filter { probe -> probe.amount != 0 })
             }
@@ -124,7 +143,7 @@ class ResearchDetailsFragment : Fragment(R.layout.research_details_fragment) {
     }
 
     private fun getIndexEPT(id: Long) {
-        GlobalScope.launch {
+        coroutineScope.launch {
             Repositories.indexValueRepository.getEPTIndex(id, 1).collect {
                 indexEPT.postValue(it)
             }
@@ -147,5 +166,68 @@ class ResearchDetailsFragment : Fragment(R.layout.research_details_fragment) {
         }
 
         indexEPT?.text = index.waterQuality
+    }
+
+    private fun setupPieChart(view: View, probes: List<Probe>) {
+        val latinName: MutableList<String> = mutableListOf(
+            "Trichoptera",
+            "Plecoptera",
+            "Ephemeroptera",
+            "Odonata",
+            "Turbellaria",
+            "Isopoda",
+            "Hirudinea",
+            "Gastropoda",
+            "Bivalvia",
+            "Chironomidae",
+            "Oligochaeta",
+            "Crustacea",
+            "Unknown"
+        )
+
+        val pieChart = view.findViewById<PieChart>(R.id.pie_сhart)
+        val pieEntries = mutableListOf<PieEntry>()
+        for (probe in probes) {
+            pieEntries.add(
+                PieEntry(
+                    probe.percent.toFloat(),
+                    latinName[probe.hydrobiontId.toInt() - 1]
+                )
+            )
+        }
+
+        pieChart.animateXY(1000, 1000)
+
+        val pieDataSet = PieDataSet(pieEntries, "")
+        if (isAdded) {
+            pieDataSet.setColors(
+                ContextCompat.getColor(this.requireContext(), R.color.hydrobiont_10),
+                ContextCompat.getColor(this.requireContext(), R.color.hydrobiont_2),
+                ContextCompat.getColor(this.requireContext(), R.color.hydrobiont_12),
+                ContextCompat.getColor(this.requireContext(), R.color.hydrobiont_3),
+                ContextCompat.getColor(this.requireContext(), R.color.hydrobiont_4),
+                ContextCompat.getColor(this.requireContext(), R.color.hydrobiont_9),
+                ContextCompat.getColor(this.requireContext(), R.color.hydrobiont_5),
+                ContextCompat.getColor(this.requireContext(), R.color.hydrobiont_6),
+                ContextCompat.getColor(this.requireContext(), R.color.hydrobiont_7),
+                ContextCompat.getColor(this.requireContext(), R.color.hydrobiont_1),
+                ContextCompat.getColor(this.requireContext(), R.color.hydrobiont_8),
+                ContextCompat.getColor(this.requireContext(), R.color.hydrobiont_11),
+                ContextCompat.getColor(this.requireContext(), R.color.hydrobiont_13),
+            )
+        }
+
+        val pieData = PieData(pieDataSet)
+        pieData.setDrawValues(false)
+
+        pieChart.description.isEnabled = false
+        pieChart.legend.isEnabled = false
+        pieChart.setEntryLabelTextSize(12f)
+
+        if (probes.isNotEmpty()) {
+            view.findViewById<FrameLayout>(R.id.frame).visibility = View.GONE
+            pieChart.data = pieData;
+            pieChart.invalidate()
+        }
     }
 }

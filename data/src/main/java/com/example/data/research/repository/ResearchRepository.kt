@@ -2,6 +2,7 @@ package com.example.data.research.repository
 
 import com.example.data.research.entities.Research
 import com.example.data.research.entities.ResearchMain
+import io.reactivex.rxjava3.core.Single
 import kotlinx.coroutines.flow.Flow
 
 interface ResearchRepository {
@@ -12,7 +13,7 @@ interface ResearchRepository {
 
     suspend fun getLastResearchId(): Flow<Long>
 
-    suspend fun addResearch(research: Research)
+    suspend fun addResearch(research: Research) : Long
 
     suspend fun getCardsResearch(): Flow<List<ResearchMain>>
 

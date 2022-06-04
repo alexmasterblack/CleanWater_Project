@@ -1,5 +1,6 @@
 package com.example.cleanwater_project.presentation.sample.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +16,8 @@ class RecyclerViewAdapter(private val clickListener: (Probe) -> Unit) :
 
     private val data: MutableList<Probe> = mutableListOf()
 
+    private var amount = 0
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val viewHolder =
             SampleItemViewHolder(
@@ -23,7 +26,15 @@ class RecyclerViewAdapter(private val clickListener: (Probe) -> Unit) :
             )
         viewHolder.itemView.setOnClickListener {
             clickListener(data[viewHolder.adapterPosition])
+            Log.d("Click", "Click")
         }
+
+        amount = 0
+
+        for (probe in data) {
+            amount += probe.amount
+        }
+
         return viewHolder
     }
 
@@ -39,6 +50,10 @@ class RecyclerViewAdapter(private val clickListener: (Probe) -> Unit) :
         this.data.clear()
         this.data.addAll(data)
         notifyDataSetChanged()
+    }
+
+    fun getAmount(): Int {
+        return amount
     }
 
     inner class SampleItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -79,7 +94,8 @@ class RecyclerViewAdapter(private val clickListener: (Probe) -> Unit) :
                 "Unknown"
             )
 
-            hydrobiontName.text = dict[item.hydrobiontId.toInt() - 1] + " (" + latinName[item.hydrobiontId.toInt() - 1] + ")"
+            hydrobiontName.text =
+                dict[item.hydrobiontId.toInt() - 1] + " (" + latinName[item.hydrobiontId.toInt() - 1] + ")"
             amount.text = "Количество: " + item.amount.toString()
         }
     }

@@ -12,6 +12,14 @@ class RoomIndexValueRepository(private val indexValueDao: IndexValueDao) : Index
         insertIndex(indexValue)
     }
 
+    override suspend fun updateIndexValue(indexValue: IndexValue) {
+        updateIndex(indexValue)
+    }
+
+    override suspend fun checkExists(researchId: Long): Flow<Int> {
+        return checkExistsByResearchId(researchId)
+    }
+
     override suspend fun getEPTIndex(researchId: Long, indexNameId: Long): Flow<IndexValue> {
         return getEPTIndexById(researchId, indexNameId)
     }
@@ -23,6 +31,10 @@ class RoomIndexValueRepository(private val indexValueDao: IndexValueDao) : Index
 
     private fun getEPTIndexById(researchId: Long, indexNameId: Long): Flow<IndexValue> {
         return indexValueDao.getEPTIndexById(researchId, indexNameId).map { it.toIndexValue() }
+    }
+
+    private fun checkExistsByResearchId(researchId: Long): Flow<Int> {
+        return indexValueDao.checkExistsByResearchId(researchId)
     }
 
     private suspend fun insertIndex(indexValue: IndexValue) {
