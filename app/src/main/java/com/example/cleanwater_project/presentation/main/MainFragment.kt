@@ -25,7 +25,8 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                     R.id.checkResearchFragment,
                     R.id.totalFragment,
                     R.id.researchDetailsFragment,
-                    R.id.sampleDetailsFragment
+                    R.id.sampleDetailsFragment,
+                    R.id.changeResearchFragment
                 )
             if (destination.id in fragments) {
 

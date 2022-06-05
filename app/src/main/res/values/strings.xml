@@ -32,6 +32,9 @@
     <string name="further">Далее</string>
     <string name="hydrobiont_image">Гидробионт</string>
     <string name="result">Итог</string>
+    <string name="sponsors">ИМКТ Зеленый крест</string>
+    <string name="empty_text_one">Здесь пока пусто</string>
+    <string name="empty_text_two">Начните свое первое исследование</string>
 
     <string-array name="length_stream">
         <item>Ручей (&lt; 1км)</item>

@@ -48,7 +48,7 @@ class RecyclerViewAdapter(private val clickListener: (ResearchMain) -> Unit) :
 
 
         fun bind(card: ResearchMain) {
-            researchNumber.text = card.collectionNumber.toString()
+            researchNumber.text = "№ " + card.collectionNumber.toString()
             region.text = card.region
             locality.text = card.settlement
             nameReservoir.text = card.nameReservoir

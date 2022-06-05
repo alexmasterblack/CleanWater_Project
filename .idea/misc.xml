@@ -25,11 +25,12 @@
         <entry key="..\:/CleanWater_Project/app/src/main/res/drawable/viewpager_selected.xml" value="0.1845" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout-v23/version_selection_fragment.xml" value="0.25" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/activity_main.xml" value="0.24615384615384617" />
+        <entry key="..\:/CleanWater_Project/app/src/main/res/layout/change_research_fragment.xml" value="0.19123505976095617" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/check_research_fragment.xml" value="0.25" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/dropdown_item.xml" value="0.25" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/dropdown_menu.xml" value="0.25" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/indices_table_fragment.xml" value="0.2" />
-        <entry key="..\:/CleanWater_Project/app/src/main/res/layout/input_research_fragment.xml" value="0.21798365122615804" />
+        <entry key="..\:/CleanWater_Project/app/src/main/res/layout/input_research_fragment.xml" value="0.17907634307257306" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/login_fragment.xml" value="0.25" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/main_fragment.xml" value="0.25" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/main_info_fragment.xml" value="0.25" />
@@ -52,6 +53,8 @@
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/version_selection_fragment.xml" value="0.264" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/layout/welcome_fragment.xml" value="0.25" />
         <entry key="..\:/CleanWater_Project/app/src/main/res/menu/main_menu.xml" value="0.25" />
+        <entry key="..\:/CleanWater_Project/app/src/main/res/menu/toolbar_menu.xml" value="0.25" />
+        <entry key="..\:/CleanWater_Project/app/src/main/res/menu/toolbar_research_menu.xml" value="0.20833333333333334" />
       </map>
     </option>
   </component>

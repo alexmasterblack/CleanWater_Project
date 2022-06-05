@@ -88,7 +88,7 @@ class SampleFragment : Fragment(R.layout.sample_fragment) {
 
     private fun setUpAlert() {
         val builder = MaterialAlertDialogBuilder(requireContext())
-        builder.setTitle("Отмена")
+        builder.setTitle("Подтверждение")
         builder.setMessage("Вы уверены, что хотите отменить исследование?")
         builder.setPositiveButton("Да") { _, _ ->
             coroutineScope.launch {

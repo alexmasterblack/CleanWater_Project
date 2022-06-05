@@ -24,6 +24,7 @@ import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.*
 
 class CheckResearchFragment : Fragment(R.layout.check_research_fragment) {
@@ -50,8 +51,17 @@ class CheckResearchFragment : Fragment(R.layout.check_research_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<Toolbar>(R.id.toolbar).setNavigationOnClickListener {
+        val toolbar = view.findViewById<Toolbar>(R.id.toolbar)
+
+        toolbar.setNavigationOnClickListener {
             findNavController().navigateUp()
+        }
+
+        toolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.close -> setCloseAlert()
+            }
+            true
         }
 
         getProbeDataById(researchId)
@@ -90,6 +100,23 @@ class CheckResearchFragment : Fragment(R.layout.check_research_fragment) {
         }
     }
 
+    private fun setCloseAlert() {
+        val builder = MaterialAlertDialogBuilder(requireContext())
+        builder.setTitle("Подтверждение")
+        builder.setMessage("Вы уверены, что хотите отменить исследование?")
+        builder.setPositiveButton("Да") { _, _ ->
+            coroutineScope.launch {
+                Repositories.researchRepository.deleteLastResearch()
+            }
+            findNavController().navigate(R.id.action_checkResearchFragment_to_inputResearchFragment)
+        }
+        builder.setNegativeButton("Нет") { _, _ ->
+
+        }
+        val dialog = builder.create()
+        dialog.show()
+    }
+
     private fun setButton(view: View, id: Long) {
         view.findViewById<MaterialButton>(R.id.continue_button).setOnClickListener {
             findNavController().navigate(
@@ -108,7 +135,7 @@ class CheckResearchFragment : Fragment(R.layout.check_research_fragment) {
         view.findViewById<TextView>(R.id.longitude)?.text = main?.longitudeByHand
 
         view.findViewById<Toolbar>(R.id.toolbar)?.title =
-            "Исследование № " + main?.collectionNumber.toString()
+            "№ " + main?.collectionNumber.toString()
     }
 
     private fun getMainInfo(id: Long) {

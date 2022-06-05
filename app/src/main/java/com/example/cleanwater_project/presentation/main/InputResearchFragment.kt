@@ -32,6 +32,18 @@ class InputResearchFragment : Fragment(R.layout.input_research_fragment) {
 
     private val researchId = MutableLiveData<Long>()
 
+    private lateinit var lengthStreamTextView: AutoCompleteTextView
+
+    private lateinit var partRiverBasinTextView: AutoCompleteTextView
+
+    private lateinit var longitudinalZoneTextView: AutoCompleteTextView
+
+    private lateinit var longitudinalElementRiverbed: AutoCompleteTextView
+
+    private lateinit var transverseElementRiverbed: AutoCompleteTextView
+
+    private lateinit var bottomSubstrateType: AutoCompleteTextView
+
     override fun onPause() {
         super.onPause()
         stopLocationUpdates()
@@ -40,6 +52,54 @@ class InputResearchFragment : Fragment(R.layout.input_research_fragment) {
     override fun onResume() {
         super.onResume()
         startLocationUpdates()
+
+        lengthStreamTextView.setAdapter(
+            ArrayAdapter(
+                requireContext(),
+                R.layout.dropdown_menu,
+                resources.getStringArray(R.array.length_stream)
+            )
+        )
+
+        partRiverBasinTextView.setAdapter(
+            ArrayAdapter(
+                requireContext(),
+                R.layout.dropdown_menu,
+                resources.getStringArray(R.array.part_river_basin)
+            )
+        )
+
+        longitudinalZoneTextView.setAdapter(
+            ArrayAdapter(
+                requireContext(),
+                R.layout.dropdown_menu,
+                resources.getStringArray(R.array.longitudinal_zone)
+            )
+        )
+
+        longitudinalElementRiverbed.setAdapter(
+            ArrayAdapter(
+                requireContext(),
+                R.layout.dropdown_menu,
+                resources.getStringArray(R.array.longitudinal_element_riverbed)
+            )
+        )
+
+        transverseElementRiverbed.setAdapter(
+            ArrayAdapter(
+                requireContext(),
+                R.layout.dropdown_menu,
+                resources.getStringArray(R.array.transverse_element_riverbed)
+            )
+        )
+
+        bottomSubstrateType.setAdapter(
+            ArrayAdapter(
+                requireContext(),
+                R.layout.dropdown_menu,
+                resources.getStringArray(R.array.bottom_substrate_type)
+            )
+        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -50,64 +110,24 @@ class InputResearchFragment : Fragment(R.layout.input_research_fragment) {
 
         getLocationUpdates(view)
 
-        view.findViewById<AutoCompleteTextView>(R.id.auto_complete_length_stream)
-            .setAdapter(
-                ArrayAdapter(
-                    requireContext(),
-                    R.layout.dropdown_menu,
-                    resources.getStringArray(R.array.length_stream)
-                )
-            )
+        lengthStreamTextView = view.findViewById(R.id.auto_complete_length_stream)
 
-        view.findViewById<AutoCompleteTextView>(R.id.auto_complete_part_river_basin)
-            .setAdapter(
-                ArrayAdapter(
-                    requireContext(),
-                    R.layout.dropdown_menu,
-                    resources.getStringArray(R.array.part_river_basin)
-                )
-            )
+        partRiverBasinTextView = view.findViewById(R.id.auto_complete_part_river_basin)
 
-        view.findViewById<AutoCompleteTextView>(R.id.auto_complete_longitudinal_zone)
-            .setAdapter(
-                ArrayAdapter(
-                    requireContext(),
-                    R.layout.dropdown_menu,
-                    resources.getStringArray(R.array.longitudinal_zone)
-                )
-            )
+        longitudinalZoneTextView = view.findViewById(R.id.auto_complete_longitudinal_zone)
 
-        view.findViewById<AutoCompleteTextView>(R.id.auto_complete_longitudinal_element_riverbed)
-            .setAdapter(
-                ArrayAdapter(
-                    requireContext(),
-                    R.layout.dropdown_menu,
-                    resources.getStringArray(R.array.longitudinal_element_riverbed)
-                )
-            )
+        longitudinalElementRiverbed =
+            view.findViewById(R.id.auto_complete_longitudinal_element_riverbed)
 
-        view.findViewById<AutoCompleteTextView>(R.id.auto_complete_transverse_element_riverbed)
-            .setAdapter(
-                ArrayAdapter(
-                    requireContext(),
-                    R.layout.dropdown_menu,
-                    resources.getStringArray(R.array.transverse_element_riverbed)
-                )
-            )
+        transverseElementRiverbed =
+            view.findViewById(R.id.auto_complete_transverse_element_riverbed)
 
-        view.findViewById<AutoCompleteTextView>(R.id.auto_complete_bottom_substrate_type)
-            .setAdapter(
-                ArrayAdapter(
-                    requireContext(),
-                    R.layout.dropdown_menu,
-                    resources.getStringArray(R.array.bottom_substrate_type)
-                )
-            )
+        bottomSubstrateType = view.findViewById(R.id.auto_complete_bottom_substrate_type)
 
         view.findViewById<TextInputEditText>(R.id.input_sampling_date)
             .setText(LocalDate.now().toString("dd.MM.YYYY"))
         view.findViewById<TextInputEditText>(R.id.input_sampling_time)
-            .setText(LocalTime.now().toString("hh:mm"))
+            .setText(LocalTime.now().toString("HH:mm"))
 
         view.findViewById<MaterialButton>(R.id.add_research_button).setOnClickListener {
 
@@ -117,9 +137,7 @@ class InputResearchFragment : Fragment(R.layout.input_research_fragment) {
                 view.findViewById<TextInputEditText>(R.id.input_collection_number)
             if (collectionNumber.text.toString().isEmpty()) {
                 collectionNumber.error = "Заполните поле"
-//                collectionNumber.setBackgroundResource(R.drawable.error_status)
             } else {
-//                collectionNumber.setBackgroundResource(R.drawable.normal_status)
                 check += 1
             }
 
@@ -139,37 +157,21 @@ class InputResearchFragment : Fragment(R.layout.input_research_fragment) {
             }
 
             val latitudeByHand = view.findViewById<TextInputEditText>(R.id.input_latitude_hand)
-//            if (latitudeByHand.text.toString().isEmpty()) {
-//                latitudeByHand.error = "Заполните поле"
-//            } else {
-//                check += 1
-//            }
 
-            // может быть и не заполнено
             val latitudeAuto = view.findViewById<TextInputEditText>(R.id.input_latitude_auto)
 
             val longitudeByHand = view.findViewById<TextInputEditText>(R.id.input_longitude_hand)
-//            if (longitudeByHand.text.toString().isEmpty()) {
-//                longitudeByHand.error = "Заполните поле"
-//            } else {
-//                check += 1
-//            }
 
             val longitudeAuto = view.findViewById<TextInputEditText>(R.id.input_longitude_auto)
 
             val region = view.findViewById<TextInputEditText>(R.id.input_region)
-//            if (region.text.toString().isEmpty()) {
-//                region.error = "Заполните поле"
-//            } else {
-//                check += 1
-//            }
-
-            val district = view.findViewById<TextInputEditText>(R.id.input_district)
-            if (district.text.toString().isEmpty()) {
-                district.error = "Заполните поле"
+            if (region.text.toString().isEmpty()) {
+                region.error = "Заполните поле"
             } else {
                 check += 1
             }
+
+            val district = view.findViewById<TextInputEditText>(R.id.input_district)
 
             val settlement = view.findViewById<TextInputEditText>(R.id.input_settlement)
             if (settlement.text.toString().isEmpty()) {
@@ -192,7 +194,6 @@ class InputResearchFragment : Fragment(R.layout.input_research_fragment) {
                 check += 1
             }
 
-            // всегда будет заполнено
             val lengthStream =
                 view.findViewById<AutoCompleteTextView>(R.id.auto_complete_length_stream)
 
@@ -211,22 +212,17 @@ class InputResearchFragment : Fragment(R.layout.input_research_fragment) {
                 check += 1
             }
 
-            // не обязательно
             val comment = view.findViewById<TextInputEditText>(R.id.input_comment)
 
-            // всегда будет заполнено
             val partRiverBasin =
                 view.findViewById<AutoCompleteTextView>(R.id.auto_complete_part_river_basin)
 
-            // всегда будет заполнено
             val longitudinalZone =
                 view.findViewById<AutoCompleteTextView>(R.id.auto_complete_longitudinal_zone)
 
-            // всегда будет заполнено
             val longitudinalElementRiverbed =
                 view.findViewById<AutoCompleteTextView>(R.id.auto_complete_longitudinal_element_riverbed)
 
-            // всегда будет заполнено
             val transverseElementRiverbed =
                 view.findViewById<AutoCompleteTextView>(R.id.auto_complete_transverse_element_riverbed)
 
@@ -259,7 +255,6 @@ class InputResearchFragment : Fragment(R.layout.input_research_fragment) {
                 check += 1
             }
 
-            // всегда будет заполнено
             val bottomSubstrateType =
                 view.findViewById<AutoCompleteTextView>(R.id.auto_complete_bottom_substrate_type)
 
@@ -295,11 +290,9 @@ class InputResearchFragment : Fragment(R.layout.input_research_fragment) {
                 check += 1
             }
 
-            // заполнено
             val samplingMethod =
                 view.findViewById<TextInputEditText>(R.id.input_sampling_method)
 
-            // заполнено
             val typeSampler =
                 view.findViewById<TextInputEditText>(R.id.input_type_sampler)
 
@@ -488,5 +481,4 @@ class InputResearchFragment : Fragment(R.layout.input_research_fragment) {
     private fun stopLocationUpdates() {
         fusedLocationClient.removeLocationUpdates(locationCallback)
     }
-
 }

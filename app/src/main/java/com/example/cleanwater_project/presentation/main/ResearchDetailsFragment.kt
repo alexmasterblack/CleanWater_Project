@@ -1,6 +1,5 @@
 package com.example.cleanwater_project.presentation.main
 
-import android.graphics.Paint
 import android.os.Bundle
 import android.view.View
 import android.widget.FrameLayout
@@ -9,6 +8,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -20,11 +20,11 @@ import com.example.data.index.entities.IndexValue
 import com.example.data.probe.entities.Probe
 import com.example.data.repository.Repositories
 import com.example.data.research.entities.ResearchMain
-import com.github.mikephil.charting.charts.Chart
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.*
 
 class ResearchDetailsFragment : Fragment(R.layout.research_details_fragment) {
@@ -55,11 +55,26 @@ class ResearchDetailsFragment : Fragment(R.layout.research_details_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<Toolbar>(R.id.toolbar).title =
-            "Исследование № $collectionNumber"
+        val toolbar = view.findViewById<Toolbar>(R.id.toolbar)
 
-        view.findViewById<Toolbar>(R.id.toolbar).setNavigationOnClickListener {
+        toolbar.title = "№ $collectionNumber"
+
+        toolbar.setNavigationOnClickListener {
             findNavController().navigateUp()
+        }
+
+        toolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.delete -> setDeleteAlert()
+                R.id.change -> {
+                    findNavController().navigate(
+                        ResearchDetailsFragmentDirections.actionResearchDetailsFragmentToChangeResearchFragment(
+                            researchId
+                        )
+                    )
+                }
+            }
+            true
         }
 
         getProbeDataById(researchId)
@@ -106,6 +121,23 @@ class ResearchDetailsFragment : Fragment(R.layout.research_details_fragment) {
         }
     }
 
+    private fun setDeleteAlert() {
+        val builder = MaterialAlertDialogBuilder(requireContext())
+        builder.setTitle("Подтверждение")
+        builder.setMessage("Вы уверены, что хотите удалить это исследование?")
+        builder.setPositiveButton("Да") { _, _ ->
+            coroutineScope.launch {
+                Repositories.researchRepository.deleteResearch(researchId)
+            }
+            findNavController().navigateUp()
+        }
+        builder.setNegativeButton("Нет") { _, _ ->
+
+        }
+        val dialog = builder.create()
+        dialog.show()
+    }
+
     private fun setMainInfo(view: View, main: ResearchMain?) {
         view.findViewById<TextView>(R.id.date)?.text = main?.date?.substring(0, 10)
         view.findViewById<TextView>(R.id.locality)?.text = main?.settlement
@@ -115,7 +147,7 @@ class ResearchDetailsFragment : Fragment(R.layout.research_details_fragment) {
     }
 
     private fun getMainInfo(id: Long) {
-        coroutineScope.launch {
+        lifecycleScope.launch {
             Repositories.researchRepository.getMainInfo(id).collect {
                 main.postValue(it)
             }
@@ -196,7 +228,7 @@ class ResearchDetailsFragment : Fragment(R.layout.research_details_fragment) {
             )
         }
 
-        pieChart.animateXY(1000, 1000)
+//        pieChart.animateXY(1000, 1000)
 
         val pieDataSet = PieDataSet(pieEntries, "")
         if (isAdded) {

@@ -37,8 +37,17 @@ class TotalFragment : Fragment(R.layout.total_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<Toolbar>(R.id.toolbar).setNavigationOnClickListener {
+        val toolbar = view.findViewById<Toolbar>(R.id.toolbar)
+
+        toolbar.setNavigationOnClickListener {
             findNavController().navigateUp()
+        }
+
+        toolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.close -> setCloseAlert()
+            }
+            true
         }
 
         getIndexEPT(researchId)
@@ -57,7 +66,7 @@ class TotalFragment : Fragment(R.layout.total_fragment) {
 
     private fun setAlert() {
         val builder = MaterialAlertDialogBuilder(requireContext())
-        builder.setTitle("Готово")
+        builder.setTitle("Подтверждение")
         builder.setMessage("Вы уверены, что хотите завершить исследование?")
         builder.setPositiveButton("Да") { _, _ ->
             findNavController().navigate(R.id.action_totalFragment_to_inputResearchFragment)
@@ -69,6 +78,22 @@ class TotalFragment : Fragment(R.layout.total_fragment) {
         dialog.show()
     }
 
+    private fun setCloseAlert() {
+        val builder = MaterialAlertDialogBuilder(requireContext())
+        builder.setTitle("Подтверждение")
+        builder.setMessage("Вы уверены, что хотите отменить исследование?")
+        builder.setPositiveButton("Да") { _, _ ->
+            coroutineScope.launch {
+                Repositories.researchRepository.deleteLastResearch()
+            }
+            findNavController().navigate(R.id.action_totalFragment_to_inputResearchFragment)
+        }
+        builder.setNegativeButton("Нет") { _, _ ->
+
+        }
+        val dialog = builder.create()
+        dialog.show()
+    }
 
     private fun getIndexEPT(id: Long) {
         coroutineScope.launch {
