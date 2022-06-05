@@ -1,18 +1,22 @@
 package com.example.cleanwater_project.presentation.sample.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cleanwater_project.R
+import com.example.data.probe.entities.Probe
 import com.example.domain.models.ResearchCard
 import com.example.domain.models.SampleItem
 
-class RecyclerViewAdapter(private val clickListener: (SampleItem) -> Unit) :
+class RecyclerViewAdapter(private val clickListener: (Probe) -> Unit) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val data: MutableList<SampleItem> = mutableListOf()
+    private val data: MutableList<Probe> = mutableListOf()
+
+    private var amount = 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val viewHolder =
@@ -22,7 +26,15 @@ class RecyclerViewAdapter(private val clickListener: (SampleItem) -> Unit) :
             )
         viewHolder.itemView.setOnClickListener {
             clickListener(data[viewHolder.adapterPosition])
+            Log.d("Click", "Click")
         }
+
+        amount = 0
+
+        for (probe in data) {
+            amount += probe.amount
+        }
+
         return viewHolder
     }
 
@@ -34,10 +46,14 @@ class RecyclerViewAdapter(private val clickListener: (SampleItem) -> Unit) :
         return data.size
     }
 
-    fun setData(data: List<SampleItem>) {
+    fun setData(data: List<Probe>) {
         this.data.clear()
         this.data.addAll(data)
         notifyDataSetChanged()
+    }
+
+    fun getAmount(): Int {
+        return amount
     }
 
     inner class SampleItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -45,8 +61,41 @@ class RecyclerViewAdapter(private val clickListener: (SampleItem) -> Unit) :
         private val amount = itemView.findViewById<TextView>(R.id.amount)
 
 
-        fun bind(item: SampleItem) {
-            hydrobiontName.text = item.hydrobiontName
+        fun bind(item: Probe) {
+            val dict: MutableList<String> = mutableListOf(
+                "Ручейники",
+                "Веснянки",
+                "Поденки",
+                "Стрекозы",
+                "Планарии",
+                "Изоподы",
+                "Пиявки",
+                "Моллюски",
+                "Моллюски",
+                "Хирономиды",
+                "Олигохеты",
+                "Ракообразные",
+                "Неопределен"
+            )
+
+            val latinName: MutableList<String> = mutableListOf(
+                "Trichoptera",
+                "Plecoptera",
+                "Ephemeroptera",
+                "Odonata",
+                "Turbellaria",
+                "Isopoda",
+                "Hirudinea",
+                "Gastropoda",
+                "Bivalvia",
+                "Chironomidae",
+                "Oligochaeta",
+                "Crustacea",
+                "Unknown"
+            )
+
+            hydrobiontName.text =
+                dict[item.hydrobiontId.toInt() - 1] + " (" + latinName[item.hydrobiontId.toInt() - 1] + ")"
             amount.text = "Количество: " + item.amount.toString()
         }
     }

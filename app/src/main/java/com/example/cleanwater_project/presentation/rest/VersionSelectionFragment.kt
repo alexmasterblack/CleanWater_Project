@@ -8,6 +8,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.cleanwater_project.R
 import com.example.cleanwater_project.presentation.adapters.ViewPagerAdapter
+import com.example.data.repository.Repositories
 import com.google.android.material.snackbar.Snackbar
 import me.relex.circleindicator.CircleIndicator3
 
@@ -18,9 +19,11 @@ class VersionSelectionFragment : Fragment(R.layout.version_selection_fragment) {
 
     private fun setViewPagerAdapter(view: View) {
         val pager = view.findViewById<ViewPager2>(R.id.pager)
-        val adapter = ViewPagerAdapter(tables)
+        val adapter = ViewPagerAdapter()
         pager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         pager.adapter = adapter
+
+        adapter.setData(tables)
 
         val indicator = view.findViewById<CircleIndicator3>(R.id.indicator)
         indicator.setViewPager(pager)

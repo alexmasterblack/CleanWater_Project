@@ -26,12 +26,15 @@
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:popExitAnim="@anim/nav_default_pop_exit_anim">
+            <argument
+                android:name="researchId"
+                app:argType="long" />
+            <argument
+                android:name="collectionNumber"
+                app:argType="long" />
+        </action>
     </fragment>
-    <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.example.cleanwater_project.presentation.main.ProfileFragment"
-        android:label="ProfileFragment" />
     <fragment
         android:id="@+id/sampleFragment"
         android:name="com.example.cleanwater_project.presentation.sample.SampleFragment"
@@ -42,14 +45,28 @@
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:popExitAnim="@anim/nav_default_pop_exit_anim">
+            <argument
+                android:name="researchId"
+                app:argType="long" />
+        </action>
         <action
             android:id="@+id/action_sampleFragment_to_sampleDetailsFragment"
             app:destination="@id/sample_navigation"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:popExitAnim="@anim/nav_default_pop_exit_anim">
+            <argument
+                android:name="researchId"
+                app:argType="long" />
+            <argument
+                android:name="hydrobiontId"
+                app:argType="long" />
+            <argument
+                android:name="amount"
+                app:argType="integer" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/checkResearchFragment"
@@ -61,12 +78,28 @@
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:popExitAnim="@anim/nav_default_pop_exit_anim">
+            <argument
+                android:name="researchId"
+                app:argType="long" />
+        </action>
+        <argument
+            android:name="researchId"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_checkResearchFragment_to_inputResearchFragment"
+            app:destination="@id/inputResearchFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/main_navigation"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/totalFragment"
         android:name="com.example.cleanwater_project.presentation.total.TotalFragment"
-        android:label="TotalFragment" >
+        android:label="TotalFragment">
         <action
             android:id="@+id/action_totalFragment_to_inputResearchFragment"
             app:destination="@id/inputResearchFragment"
@@ -75,7 +108,10 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@id/main_navigation"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="researchId"
+            app:argType="long" />
     </fragment>
     <navigation
         android:id="@+id/sample_navigation"
@@ -83,7 +119,17 @@
         <fragment
             android:id="@+id/sampleDetailsFragment"
             android:name="com.example.cleanwater_project.presentation.sample.SampleDetailsFragment"
-            android:label="SampleDetailsFragment" />
+            android:label="SampleDetailsFragment">
+            <argument
+                android:name="researchId"
+                app:argType="long" />
+            <argument
+                android:name="hydrobiontId"
+                app:argType="long" />
+            <argument
+                android:name="amount"
+                app:argType="integer" />
+        </fragment>
     </navigation>
     <navigation
         android:id="@+id/research_navigation"
@@ -91,6 +137,32 @@
         <fragment
             android:id="@+id/researchDetailsFragment"
             android:name="com.example.cleanwater_project.presentation.main.ResearchDetailsFragment"
-            android:label="ResearchDetailsFragment" />
+            android:label="ResearchDetailsFragment">
+            <argument
+                android:name="researchId"
+                app:argType="long" />
+            <argument
+                android:name="collectionNumber"
+                app:argType="long" />
+            <action
+                android:id="@+id/action_researchDetailsFragment_to_changeResearchFragment"
+                app:destination="@id/changeResearchFragment"
+                app:enterAnim="@anim/nav_default_enter_anim"
+                app:exitAnim="@anim/nav_default_exit_anim"
+                app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+                app:popExitAnim="@anim/nav_default_pop_exit_anim">
+                <argument
+                    android:name="researchId"
+                    app:argType="long" />
+            </action>
+        </fragment>
+        <fragment
+            android:id="@+id/changeResearchFragment"
+            android:name="com.example.cleanwater_project.presentation.main.ChangeResearchFragment"
+            android:label="ChangeResearchFragment">
+            <argument
+                android:name="researchId"
+                app:argType="long" />
+        </fragment>
     </navigation>
 </navigation>

@@ -32,8 +32,8 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:layout_width="164dp"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:background="@drawable/ic_water_quality" />
 
@@ -68,7 +68,7 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="0.5"
                     android:background="@drawable/ic_ept_index"
                     android:gravity="center"
@@ -105,7 +105,7 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="0.5"
                     android:background="@drawable/ic_woodiwiss_index"
                     android:gravity="center"
@@ -120,6 +120,7 @@
                     android:layout_weight="0.5"
                     android:background="@drawable/ic_block_total"
                     android:gravity="center"
+                    android:text="@string/pro"
                     android:textColor="@color/dark"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -142,7 +143,7 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="0.5"
                     android:background="@drawable/ic_fbi_index"
                     android:gravity="center"
@@ -157,6 +158,7 @@
                     android:layout_weight="0.5"
                     android:background="@drawable/ic_block_total"
                     android:gravity="center"
+                    android:text="@string/pro"
                     android:textColor="@color/dark"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -179,7 +181,7 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="0.5"
                     android:background="@drawable/ic_bmwp_index"
                     android:gravity="center"
@@ -194,6 +196,7 @@
                     android:layout_weight="0.5"
                     android:background="@drawable/ic_block_total"
                     android:gravity="center"
+                    android:text="@string/pro"
                     android:textColor="@color/dark"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -216,7 +219,7 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="0.5"
                     android:background="@drawable/ic_fe_bmwp_index"
                     android:gravity="center"
@@ -231,6 +234,7 @@
                     android:layout_weight="0.5"
                     android:background="@drawable/ic_block_total"
                     android:gravity="center"
+                    android:text="@string/pro"
                     android:textColor="@color/dark"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -253,7 +257,7 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="0.5"
                     android:background="@drawable/ic_fe_aspt_index"
                     android:gravity="center"
@@ -268,6 +272,7 @@
                     android:layout_weight="0.5"
                     android:background="@drawable/ic_block_total"
                     android:gravity="center"
+                    android:text="@string/pro"
                     android:textColor="@color/dark"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -290,7 +295,7 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="0.5"
                     android:background="@drawable/ic_im_index"
                     android:gravity="center"
@@ -305,8 +310,9 @@
                     android:layout_weight="0.5"
                     android:background="@drawable/ic_block_total"
                     android:gravity="center"
+                    android:text="@string/pro"
                     android:textColor="@color/dark"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -327,7 +333,7 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="0.5"
                     android:background="@drawable/ic_im_tv_index"
                     android:gravity="center"
@@ -342,8 +348,9 @@
                     android:layout_weight="0.5"
                     android:background="@drawable/ic_block_total"
                     android:gravity="center"
+                    android:text="@string/pro"
                     android:textColor="@color/dark"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -364,7 +371,7 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="0.5"
                     android:background="@drawable/ic_gw_index"
                     android:gravity="center"
@@ -379,8 +386,9 @@
                     android:layout_weight="0.5"
                     android:background="@drawable/ic_block_total"
                     android:gravity="center"
+                    android:text="@string/pro"
                     android:textColor="@color/dark"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -401,7 +409,7 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="0.5"
                     android:background="@drawable/ic_ip_1_index"
                     android:gravity="center"
@@ -416,8 +424,9 @@
                     android:layout_weight="0.5"
                     android:background="@drawable/ic_block_total"
                     android:gravity="center"
+                    android:text="@string/pro"
                     android:textColor="@color/dark"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -438,7 +447,7 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="0.5"
                     android:background="@drawable/ic_ib_index"
                     android:gravity="center"
@@ -453,8 +462,9 @@
                     android:layout_weight="0.5"
                     android:background="@drawable/ic_block_total_bottom"
                     android:gravity="center"
+                    android:text="@string/pro"
                     android:textColor="@color/dark"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
             </LinearLayout>

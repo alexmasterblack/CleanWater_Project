@@ -1,0 +1,31 @@
+package com.example.data.research.entities
+
+data class ResearchUpdate(
+    val id: Long,
+    val latitudeByHand: String,
+    val longitudeByHand: String,
+    val region: String,
+    val district: String,
+    val settlement: String,
+    val nameReservoir: String,
+    val riverBasin: String,
+    val lengthStream: String,
+    val airTemperature: Double,
+    val waterTemperature: Double,
+    val comment: String,
+    val partRiverBasin: String,
+    val longitudinalZone: String,
+    val longitudinalElementRiverbed: String,
+    val transverseElementRiverbed: String,
+    val currentVelosity: Double,
+    val widthRiverbed: Double,
+    val averageDepth: Double,
+    val depthSamplingPoint: Double,
+    val bottomSubstrateType: String,
+    val developmentAquaticVegetation: String,
+    val typeRiparianVegetation: String,
+    val illuminationRiverbed: String,
+    val anthropogenicImpact: String,
+    val samplingMethod: String,
+    val typeSampler: String
+)
