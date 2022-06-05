@@ -10,4 +10,6 @@ data class ResearchMain(
     val nameReservoir: String,
     val latitudeByHand: String,
     val longitudeByHand: String,
+    val latitudeAuto: String,
+    val longitudeAuto: String
 )

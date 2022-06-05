@@ -13,6 +13,8 @@ data class MainInfoTuples(
     @ColumnInfo(name = "name_reservoir") val nameReservoir: String,
     @ColumnInfo(name = "latitude_by_hand") val latitudeByHand: String,
     @ColumnInfo(name = "longitude_by_hand") val longitudeByHand: String,
+    @ColumnInfo(name = "latitude_auto") val latitudeAuto: String,
+    @ColumnInfo(name = "longitude_auto") val longitudeAuto: String,
 )
 
 data class UpdateResearchTuples(

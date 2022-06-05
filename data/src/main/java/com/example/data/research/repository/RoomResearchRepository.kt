@@ -61,7 +61,9 @@ class RoomResearchRepository(private val researchDao: ResearchDao) : ResearchRep
                     mainInfoTuples.settlement,
                     mainInfoTuples.nameReservoir,
                     mainInfoTuples.latitudeByHand,
-                    mainInfoTuples.longitudeByHand
+                    mainInfoTuples.longitudeByHand,
+                    mainInfoTuples.latitudeAuto,
+                    mainInfoTuples.longitudeAuto
                 )
             }.reversed()
         }
@@ -80,7 +82,9 @@ class RoomResearchRepository(private val researchDao: ResearchDao) : ResearchRep
                     it.settlement,
                     it.nameReservoir,
                     it.latitudeByHand,
-                    it.longitudeByHand
+                    it.longitudeByHand,
+                    it.latitudeAuto,
+                    it.longitudeAuto
                 )
             }
         }

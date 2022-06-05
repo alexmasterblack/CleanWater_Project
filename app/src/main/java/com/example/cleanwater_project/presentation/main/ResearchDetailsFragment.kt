@@ -142,8 +142,19 @@ class ResearchDetailsFragment : Fragment(R.layout.research_details_fragment) {
         view.findViewById<TextView>(R.id.date)?.text = main?.date?.substring(0, 10)
         view.findViewById<TextView>(R.id.locality)?.text = main?.settlement
         view.findViewById<TextView>(R.id.reservoir)?.text = main?.nameReservoir
-        view.findViewById<TextView>(R.id.latitude)?.text = main?.latitudeByHand
-        view.findViewById<TextView>(R.id.longitude)?.text = main?.longitudeByHand
+
+        if (main != null) {
+            if (main.latitudeByHand == "") {
+                view.findViewById<TextView>(R.id.latitude)?.text = main.latitudeAuto
+            } else {
+                view.findViewById<TextView>(R.id.latitude)?.text = main.latitudeByHand
+            }
+            if (main.longitudeByHand == "") {
+                view.findViewById<TextView>(R.id.longitude)?.text = main.longitudeAuto
+            } else {
+                view.findViewById<TextView>(R.id.longitude)?.text = main.longitudeByHand
+            }
+        }
     }
 
     private fun getMainInfo(id: Long) {

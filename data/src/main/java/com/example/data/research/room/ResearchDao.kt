@@ -12,10 +12,10 @@ interface ResearchDao {
     @Query("SELECT * FROM research WHERE id=:id")
     fun getById(id: Long): Flow<ResearchDbEntity>
 
-    @Query("SELECT id, collection_number, date, region, district, settlement, name_reservoir, latitude_by_hand, longitude_by_hand FROM research")
+    @Query("SELECT id, collection_number, date, region, district, settlement, name_reservoir, latitude_by_hand, longitude_by_hand, latitude_auto, longitude_auto FROM research")
     fun getAllMain(): Flow<List<MainInfoTuples>>
 
-    @Query("SELECT id, collection_number, date, region, district, settlement, name_reservoir, latitude_by_hand, longitude_by_hand FROM research WHERE id=:id ")
+    @Query("SELECT id, collection_number, date, region, district, settlement, name_reservoir, latitude_by_hand, longitude_by_hand, latitude_auto, longitude_auto FROM research WHERE id=:id ")
     fun getMainById(id: Long): Flow<MainInfoTuples?>
 
     @Insert(entity = ResearchDbEntity::class, onConflict = OnConflictStrategy.REPLACE)
