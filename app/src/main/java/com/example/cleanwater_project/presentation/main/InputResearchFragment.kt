@@ -20,6 +20,8 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.*
 import org.joda.time.*
+import java.math.RoundingMode
+import java.text.DecimalFormat
 
 
 class InputResearchFragment : Fragment(R.layout.input_research_fragment) {
@@ -460,10 +462,13 @@ class InputResearchFragment : Fragment(R.layout.input_research_fragment) {
                         "Latitude: ${location.latitude}, Longitude: ${location.longitude}"
                     )
 
+                    val df = DecimalFormat("#.####")
+                    df.roundingMode = RoundingMode.DOWN
+
                     view.findViewById<TextInputEditText>(R.id.input_longitude_auto)
-                        .setText(location.longitude.toString())
+                        .setText(df.format(location.longitude).toString())
                     view.findViewById<TextInputEditText>(R.id.input_latitude_auto)
-                        .setText(location.latitude.toString())
+                        .setText(df.format(location.latitude).toString())
                 }
             }
         }

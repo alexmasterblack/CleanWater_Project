@@ -102,8 +102,10 @@ class SampleDetailsFragment : Fragment(R.layout.sample_details_fragment) {
 
         adapter.setData(tables)
 
-        val indicator = view.findViewById<CircleIndicator3>(R.id.indicator)
-        indicator.setViewPager(pager)
+        if (tables.size > 1) {
+            val indicator = view.findViewById<CircleIndicator3>(R.id.indicator)
+            indicator.setViewPager(pager)
+        }
     }
 
     private fun setHydrobiontInfo(view: View, hydrobiont: Hydrobiont) {
