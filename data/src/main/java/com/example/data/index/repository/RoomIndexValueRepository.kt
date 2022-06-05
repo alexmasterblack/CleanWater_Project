@@ -16,7 +16,7 @@ class RoomIndexValueRepository(private val indexValueDao: IndexValueDao) : Index
         updateIndex(indexValue)
     }
 
-    override suspend fun checkExists(researchId: Long): Flow<Int> {
+    override suspend fun checkExists(researchId: Long): Boolean {
         return checkExistsByResearchId(researchId)
     }
 
@@ -33,7 +33,7 @@ class RoomIndexValueRepository(private val indexValueDao: IndexValueDao) : Index
         return indexValueDao.getEPTIndexById(researchId, indexNameId).map { it.toIndexValue() }
     }
 
-    private fun checkExistsByResearchId(researchId: Long): Flow<Int> {
+    private suspend fun checkExistsByResearchId(researchId: Long): Boolean {
         return indexValueDao.checkExistsByResearchId(researchId)
     }
 

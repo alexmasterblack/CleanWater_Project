@@ -35,6 +35,7 @@
     <string name="sponsors">ИМКТ Зеленый крест</string>
     <string name="empty_text_one">Здесь пока пусто</string>
     <string name="empty_text_two">Начните свое первое исследование</string>
+    <string name="pro">Pro</string>
 
     <string-array name="length_stream">
         <item>Ручей (&lt; 1км)</item>

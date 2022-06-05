@@ -17,6 +17,8 @@ import kotlinx.coroutines.*
 
 class ResearchFragment : Fragment(R.layout.research_fragment) {
 
+    private val coroutineScope = CoroutineScope(Dispatchers.Main)
+
     private val data = MutableLiveData<List<ResearchMain>>()
 
     private val adapter = RecyclerViewAdapter {
@@ -28,6 +30,11 @@ class ResearchFragment : Fragment(R.layout.research_fragment) {
         )
     }
 
+    override fun onPause() {
+        super.onPause()
+        coroutineScope.cancel()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -37,7 +44,22 @@ class ResearchFragment : Fragment(R.layout.research_fragment) {
             }
         }
 
+        data.observe(requireActivity()) {
+            checkExists(it)
+        }
+
         setRecyclerViewAdapter(view)
+    }
+
+    private fun checkExists(researches: List<ResearchMain>) {
+        lifecycleScope.launch {
+            for (research in researches) {
+                val check = Repositories.indexValueRepository.checkExists(research.id)
+                if (!check) {
+                    Repositories.researchRepository.deleteResearch(research.id)
+                }
+            }
+        }
     }
 
     private fun setRecyclerViewAdapter(view: View) {

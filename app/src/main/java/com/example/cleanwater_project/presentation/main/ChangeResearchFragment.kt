@@ -22,6 +22,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
+import java.math.RoundingMode
+import java.text.DecimalFormat
 
 class ChangeResearchFragment : Fragment(R.layout.change_research_fragment) {
 
@@ -142,6 +144,9 @@ class ChangeResearchFragment : Fragment(R.layout.change_research_fragment) {
 
     private fun setResearch(view: View, research: Research) {
 
+        val df = DecimalFormat("#.####")
+        df.roundingMode = RoundingMode.DOWN
+
         val latitudeByHand = view.findViewById<TextInputEditText>(R.id.input_latitude_hand)
         latitudeByHand.setText(research.latitudeByHand)
 
@@ -167,11 +172,11 @@ class ChangeResearchFragment : Fragment(R.layout.change_research_fragment) {
         lengthStream.setText(research.lengthStream, false)
 
         val airTemperature = view.findViewById<TextInputEditText>(R.id.input_air_temperature)
-        airTemperature.setText(research.airTemperature.toString())
+        airTemperature.setText(df.format(research.airTemperature).toString())
 
         val waterTemperature =
             view.findViewById<TextInputEditText>(R.id.input_water_temperature)
-        waterTemperature.setText(research.waterTemperature.toString())
+        waterTemperature.setText(df.format(research.waterTemperature).toString())
 
         val comment = view.findViewById<TextInputEditText>(R.id.input_comment)
         comment.setText(research.comment)
@@ -193,17 +198,17 @@ class ChangeResearchFragment : Fragment(R.layout.change_research_fragment) {
         transverseElementRiverbed.setText(research.transverseElementRiverbed, false)
 
         val currentVelosity = view.findViewById<TextInputEditText>(R.id.input_current_velosity)
-        currentVelosity.setText(research.currentVelosity.toString())
+        currentVelosity.setText(df.format(research.currentVelosity).toString())
 
         val widthRiverbed = view.findViewById<TextInputEditText>(R.id.input_width_riverbed)
-        widthRiverbed.setText(research.widthRiverbed.toString())
+        widthRiverbed.setText(df.format(research.widthRiverbed).toString())
 
         val averageDepth = view.findViewById<TextInputEditText>(R.id.input_average_depth)
-        averageDepth.setText(research.averageDepth.toString())
+        averageDepth.setText(df.format(research.averageDepth).toString())
 
         val depthSamplingPoint =
             view.findViewById<TextInputEditText>(R.id.input_depth_sampling_point)
-        depthSamplingPoint.setText(research.depthSamplingPoint.toString())
+        depthSamplingPoint.setText(df.format(research.depthSamplingPoint).toString())
 
         val bottomSubstrateType =
             view.findViewById<AutoCompleteTextView>(R.id.auto_complete_bottom_substrate_type)
